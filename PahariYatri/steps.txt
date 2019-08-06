@@ -22,3 +22,26 @@ software architectural pattern. The MTV pattern is Djangoâ€™s take on the modelâ
 
   Creating an admin user
   * python manage.py createsuperuser
+
+
+  Follow these steps to project to Github
+
+1) git init
+
+2) git add .
+
+3) git commit -m "Add all my files"
+
+4) git remote add origin https://github.com/pahariyatri/WebApp.git
+
+5) git pull origin master
+
+6) git push origin master
+
+error:
+pankaj@pankaj-Inspiron-5559:~/PycharmProjects/PahariYatri$ git commit -m "Add all my files"
+error: insufficient permission for adding an object to repository database .git/objects
+error: insufficient permission for adding an object to repository database .git/objects
+error: Error building trees
+
+** sudo chown -R pankaj:1 .git

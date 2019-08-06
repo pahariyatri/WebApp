@@ -1,0 +1,24 @@
+Django is a free and open-source web framework written in Python that adheres to the model template view (MTV)
+software architectural pattern. The MTV pattern is Django’s take on the model–view–controller (MVC) pattern.
+ According to the Django Software Foundation, the model is the single definitive source of your data,
+ the view describes the data that gets represented to the user via a Python callback function to a specific URL,
+  and the template is how Django generates HTML dynamically.
+
+  Step 1 — Install Python and pip
+  * sudo apt-get update && sudo apt-get -y upgrade
+  * sudo apt-get install python3
+  * sudo apt-get install -y python3-pip
+
+  Step 2 — Install virtualenv
+  * pip3 install virtualenv
+
+  Step 3 — Install Django
+  * . env/bin/activate
+  * pip install django
+
+  Step 4 — Creating a Django Project
+  * django-admin startproject PahariYatri
+  * python manage.py runserver
+
+  Creating an admin user
+  * python manage.py createsuperuser

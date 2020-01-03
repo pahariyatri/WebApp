@@ -1,30 +1,40 @@
-from django.shortcuts import render
+from django.http import HttpResponseRedirect
+from django.shortcuts import render, redirect
+from .models import Popular_destinations, Upcoming_destination, Special_offers, Home_background, Description, Overview, Thought, Event, Trip
 
-# Create your views here.
+from .forms import Tripform
 
-from  .models import  Destination
 def index(request):
+    pdests = Popular_destinations.objects.all()
+    dests = Upcoming_destination.objects.all()
+    soffers = Special_offers.objects.all()
+    home = Home_background.objects.all()
+    thought = Thought.objects.all()
 
-    dest1 = Destination()
-    dest1.name = 'Mumbai'
-    dest1.price = 7000
-    dest1.img = 'top_1.jpg'
+    destination = {
+        "home_back": home,
+        "popular_dest": pdests,
+        "top_dest": dests,
+        "special_offers": soffers,
+        "thoug": thought
+    }
+    return render(request, 'index.html', destination)
 
-    dest2 = Destination()
-    dest2.name = 'hyderabad'
-    dest2.price = 8000
-    dest2.img = 'top_2.jpg'
 
-    dest3 = Destination()
-    dest3.name = 'Bengaluru'
-    dest3.price = 7050
-    dest3.img = 'top_3.jpg'
 
-    dest4 = Destination()
-    dest4.name = 'Delhi'
-    dest4.price = 10000
-    dest4.img = 'top_4.jpg'
+def about(request):
+    return render(request, 'about.html')
 
-    dests = [dest1, dest2, dest3, dest4]
+def contact(request):
+    return render(request, 'contact.html')
 
-    return render(request, 'index.html', {'dests':dests})
+def offers(request):
+    eve = Event.objects.all()
+    ev = {
+        "even": eve
+    }
+    return render(request, 'offers.html',ev)
+
+def news(request):
+    return render(request, 'news.html')
+

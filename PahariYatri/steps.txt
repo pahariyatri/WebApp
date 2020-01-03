@@ -48,3 +48,6 @@ error: insufficient permission for adding an object to repository database .git/
 error: Error building trees
 
 ** sudo chown -R pankaj:1 .git
+
+Data Base
+sudo -u postgres psql

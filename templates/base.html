@@ -1,0 +1,195 @@
+{% load static %}
+<!DOCTYPE html>
+<body lang="en">
+<head>
+<title>Pahari Yatri</title>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="description" content="PahariYatri project">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" type="text/css" href="{%static 'css/bootstrap4/bootstrap.min.css' %}">
+<link href="{% static 'plugins/font-awesome-4.7.0/css/font-awesome.min.css' %}" rel="stylesheet" type="text/css">
+<link rel="stylesheet" type="text/css" href="{% static 'plugins/OwlCarousel2-2.2.1/owl.carousel.css' %}">
+<link rel="stylesheet" type="text/css" href="{% static 'plugins/OwlCarousel2-2.2.1/owl.theme.default.css' %}">
+<link rel="stylesheet" type="text/css" href="{% static 'plugins/OwlCarousel2-2.2.1/animate.css' %}">
+<link href="{% static 'plugins/magnific-popup/magnific-popup.css' %}" rel="stylesheet" type="text/css">
+<link rel="stylesheet" type="text/css" href="{% static 'css/main_styles.css' %}">
+<link rel="stylesheet" type="text/css" href="{% static 'css/responsive.css' %}">
+	<style>
+.dropbtn {
+  background-color: #131A2F;
+  color: white;
+  padding: 16px;
+  font-size: 16px;
+  border: none;
+  cursor: pointer;
+}
+
+.dropbtn:hover, .dropbtn:focus {
+  background-color: #131A2F;
+}
+
+.dropdown {
+  position: relative;
+  display: inline-block;
+}
+
+.dropdown-content {
+  display: none;
+  position: absolute;
+  background-color: #f1f1f1;
+  min-width: 90px;
+  overflow: auto;
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  z-index: 1;
+}
+
+.dropdown-content a {
+  color: black;
+  padding: 12px 16px;
+  text-decoration: none;
+  display: block;
+}
+
+.dropdown a:hover {background-color: #ddd;}
+
+.show {display: block;}
+</style>
+
+
+</head>
+
+<div class="super_container">
+
+
+	<!-- Header -->
+
+	<header class="header">
+		<div class="container">
+			<div class="row">
+				<div class="col">
+					<div class="header_container d-flex flex-row align-items-center justify-content-start">
+
+
+						<!-- Logo -->
+						<div class="logo_container">
+							<div class="logo">
+								<div>Pahari Yatri</div>
+								<div>A curly boy who travel</div>
+								<div class="logo_image"><img src="{% static 'images/logo.png' %}" alt=""></div>
+							</div>
+						</div>
+
+
+						<!-- Main Navigation -->
+						<nav class="main_nav ml-auto">
+							<ul class="main_nav_list">
+								<li class="main_nav_item active"><a href="explore">Destinations</a></li>
+								<div class="dropdown">
+ 								 <button onclick="myFun()" class="dropbtn"> <i class="fa fa-user-circle-o" style="font-size:30px"></i></button>
+									<div id="myDropdown" class="dropdown-content">
+									{% if user.is_authenticated %}
+ 									   <a href="#about">Hello,{{user.first_name}}</a>
+										 <a href="accounts/logout">LogOut</a>
+										 {% else %}
+   										 <a href="accounts/login">Log in</a>
+	 									 <a href="accounts/register">Sign in</a>
+  								</div>
+						</div>
+
+
+								{% endif %}
+							</ul>
+
+						</nav>
+
+						<!-- Search -->
+						<div class="search">
+							<form action="#" class="search_form">
+								<input type="search" name="search_input" class="search_input ctrl_class" required="required" placeholder="Keyword">
+								<button type="submit" class="search_button ml-auto ctrl_class"><img src="{% static 'images/search.png' %}" alt=""></button>
+							</form>
+						</div>
+
+						<!-- Hamburger -->
+						<div class="hamburger ml-auto"><i class="fa fa-bars" aria-hidden="true"></i></div>
+
+					</div>
+				</div>
+			</div>
+		</div>
+	</header>
+
+	<!-- Menu -->
+
+	<div class="menu_container menu_mm">
+
+		<!-- Menu Close Button -->
+		<div class="menu_close_container">
+			<div class="menu_close"></div>
+		</div>
+
+		<!-- Menu Items -->
+		<div class="menu_inner menu_mm">
+			<div class="menu menu_mm">
+				<div class="menu_search_form_container">
+					<form action="#" id="menu_search_form">
+						<input type="search" class="menu_search_input menu_mm">
+						<button id="menu_search_submit" class="menu_search_submit" type="submit"><img src="{% static 'images/search_2.png' %}" alt=""></button>
+					</form>
+				</div>
+				<ul class="menu_list menu_mm">
+					<li class="menu_item menu_mm"><a href="explore">Destinations</a></li>
+
+					{% if user.is_authenticated %}
+					<li class="menu_item menu_mm"><a href="contact">Hello,{{user.first_name}}</a></li>
+					<li class="menu_item menu_mm"><a href="accounts/logout">LogOut</a></li>
+					{% else %}
+
+					<button onclick="document.getElementById('id01').style.display='block'" style="width:auto;">Login</button>
+					{% endif %}
+				</ul>
+
+				<!-- Menu Social -->
+
+				<div class="menu_social_container menu_mm">
+					<ul class="menu_social menu_mm">
+						<li class="menu_social_item menu_mm"><a href="#"><i class="fa fa-pinterest" aria-hidden="true"></i></a></li>
+						<li class="menu_social_item menu_mm"><a href="#"><i class="fa fa-linkedin" aria-hidden="true"></i></a></li>
+						<li class="menu_social_item menu_mm"><a href="#"><i class="fa fa-instagram" aria-hidden="true"></i></a></li>
+						<li class="menu_social_item menu_mm"><a href="#"><i class="fa fa-facebook" aria-hidden="true"></i></a></li>
+						<li class="menu_social_item menu_mm"><a href="#"><i class="fa fa-twitter" aria-hidden="true"></i></a></li>
+					</ul>
+				</div>
+
+				<div class="menu_copyright menu_mm">Pahari Yatri All rights reserved</div>
+			</div>
+
+		</div>
+		{% block content %}{% endblock content %}
+
+
+
+	</div>
+</div>
+<script>
+/* When the user clicks on the button,
+toggle between hiding and showing the dropdown content */
+function myFun() {
+  document.getElementById("myDropdown").classList.toggle("show");
+}
+
+// Close the dropdown if the user clicks outside of it
+window.onclick = function(event) {
+  if (!event.target.matches('.dropbtn')) {
+    var dropdowns = document.getElementsByClassName("dropdown-content");
+    var i;
+    for (i = 0; i < dropdowns.length; i++) {
+      var openDropdown = dropdowns[i];
+      if (openDropdown.classList.contains('show')) {
+        openDropdown.classList.remove('show');
+      }
+    }
+  }
+}
+</script>

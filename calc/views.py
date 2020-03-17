@@ -1,11 +1,16 @@
-from django.http import HttpResponseRedirect
-from django.shortcuts import render, redirect
-from .models import Popular_destinations, Upcoming_destination, Special_offers, Home_background, Description, Overview, Thought, Event, Trip
 
-from .forms import Tripform
+from django.shortcuts import render, redirect
+from .filters import DestinationFilter
+from .models import Popular_destinations, Upcoming_destination, Special_offers, Home_background, Thought
+
+
 
 def index(request):
     pdests = Popular_destinations.objects.all()
+
+    myFilter = DestinationFilter(request.GET, queryset=pdests)
+    pdests = myFilter.qs
+
     dests = Upcoming_destination.objects.all()
     soffers = Special_offers.objects.all()
     home = Home_background.objects.all()
@@ -14,6 +19,7 @@ def index(request):
     destination = {
         "home_back": home,
         "popular_dest": pdests,
+        "filter_": myFilter,
         "top_dest": dests,
         "special_offers": soffers,
         "thoug": thought

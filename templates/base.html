@@ -74,9 +74,10 @@
 						<!-- Logo -->
 						<div class="logo_container">
 							<div class="logo">
+							
 								<div>Pahari Yatri</div>
 								<div>A curly boy who travel</div>
-								<div class="logo_image"><img src="{% static 'images/logo.png' %}" alt=""></div>
+								
 							</div>
 						</div>
 
@@ -89,7 +90,9 @@
  								 <button onclick="myFun()" class="dropbtn"> <i class="fa fa-user-circle-o" style="font-size:30px"></i></button>
 									<div id="myDropdown" class="dropdown-content">
 									{% if user.is_authenticated %}
- 									   <a href="#about">Hello,{{user.first_name}}</a>
+ 									   <a href="accounts/profile">Hello,{{user.first_name}}</a>
+										<a href ="#">Nofification</a>
+										<a href ="#">Settings</a>
 										 <a href="accounts/logout">LogOut</a>
 										 {% else %}
    										 <a href="accounts/login">Log in</a>
@@ -139,14 +142,21 @@
 					</form>
 				</div>
 				<ul class="menu_list menu_mm">
-					<li class="menu_item menu_mm"><a href="explore">Destinations</a></li>
+					<li class="main_nav_item active"><a href="explore">Destinations</a></li>
+								<div class="dropdown">
+ 								 <button onclick="myFun()" class="dropbtn"> <i class="fa fa-user-circle-o" style="font-size:30px"></i></button>
+									<div id="myDropdown" class="dropdown-content">
+									{% if user.is_authenticated %}
+ 									   <a href="accounts/profile">Hello,{{user.first_name}}</a>
+										<a href ="#">Nofification</a>
+										<a href ="#">Settings</a>
+										 <a href="accounts/logout">LogOut</a>
+										 {% else %}
+   										 <a href="accounts/login">Log in</a>
+	 									 <a href="accounts/register">Sign in</a>
+											</div>
+						</div>
 
-					{% if user.is_authenticated %}
-					<li class="menu_item menu_mm"><a href="contact">Hello,{{user.first_name}}</a></li>
-					<li class="menu_item menu_mm"><a href="accounts/logout">LogOut</a></li>
-					{% else %}
-
-					<button onclick="document.getElementById('id01').style.display='block'" style="width:auto;">Login</button>
 					{% endif %}
 				</ul>
 

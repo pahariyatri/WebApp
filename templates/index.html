@@ -2,19 +2,19 @@
 {% block content %}
 {% load static %}
 	<!-- Home -->
-	{% for home in home_back %}
+	{% for home_back in home_back %}
 
 	<div class="home">
 
 
-		<div class="home_background" style="background-image:url({{home.background_image.url}})"></div>
+		<div class="home_background" style="background-image:url({{home_back.background_image.url}})"></div>
 
 
 
 		<div class="home_content">
 			<div class="home_content_inner">
-				<div class="home_text_large">{{home.text_large}}</div>
-				<div class="home_text_small">{{home.text_small}}</div>
+				<div class="home_text_large">{{home_back.text_large}}</div>
+				<div class="home_text_small">{{home_back.text_small}}</div>
 			</div>
 		</div>
 	</div>
@@ -22,35 +22,42 @@
 
 	<!-- Find Form -->
 
-	<div class="find">
 
-		<!-- Image by https://unsplash.com/@garciasaldana_ -->
+
+	<div class="find">
 		<div class="find_background parallax-window" data-parallax="scroll" data-image-src="{% static 'images/find.jpg' %}" data-speed="0.8"></div>
 		<div class="container">
-
 			<div class="row">
 				<div class="col-12">
 					<div class="find_title text-center">Find the Adventure of a lifetime</div>
 				</div>
 				<div class="col-12">
 					<div class="find_form_container">
-						<form action="plan" method="post" id="find_form" class="find_form d-flex flex-md-row flex-column align-items-md-center align-items-start justify-content-md-between justify-content-start flex-wrap">
+						<form method="GET" id="find_form" class="find_form d-flex flex-md-row flex-column align-items-md-center align-items-start justify-content-md-between justify-content-start flex-wrap">
 							{% csrf_token %}
 							<div class="find_item">
-								<input type="text" class="destination find_input" required="required" placeholder="Your Name">
-								<input type="tel" class="destination find_input" required="required" placeholder="Your Phone">
-								</div>
-							<div class="find_item">
-								<input type="number" class="destination find_input" required="required" placeholder="Number Of People">
-								<input type="text" class="destination find_input" required="required" placeholder="Message">
-								</div>
-							<div>
-								<input type="date" class="destination find_input" required="required" placeholder="Date">
-								<button input type="submit"  class="destination find_input">Submit</button>
+								<div>Destination:</div>
+								<input type="text"  name="name" id="name" class="destination find_input" required="required" placeholder="Keyword here">
 							</div>
-
+							<div class="find_item">
+								<div>Adventure type:</div>
+								<select name="CHOICES" id="Type" class="dropdown_item_select find_input">
+									<option value="w">WildLife</option>
+									<option value="a">Advan</option>
+									<option value="f">Widthfrandes</option>
+									<option value="s">Solo</option>
+								</select>
+							</div>
+							<div class="find_item">
+								<div>Min price</div>
+								<select name="price" id="price" class="dropdown_item_select find_input">
+									<option>&nbsp;</option>
+									<option>Price</option>
+									<option>Price</option>
+								</select>
+							</div>
+							<button class="button find_button" type="submit">Find</button>
 						</form>
-
 					</div>
 				</div>
 			</div>
@@ -64,21 +71,19 @@
 			<div class="row">
 				<div class="col">
 					<div class="section_title text-center">
-						<h2>Upcoming Destinations</h2>
-						<div>take a look at these offers</div>
+						<h2>Destinations</h2>
+						<div>Take A Look At These Mountains </div>
 					</div>
 				</div>
 			</div>
 			<div class="row top_content">
-
-						{% for dest in top_dest %}
-
+						{% for dests in top_dest %}
 				<div class="col-lg-3 col-md-6 top_col">
 
 					<!-- Top Destination Item -->
 					<div class="top_item">
-						<a href=''>
-							<div class="top_item_image"><img src="{{dest.img.url}}" ></div>
+
+							<div class="top_item_image"><img data-desc="{{dests.detail}}" dat-text="{{dests.name}}" class="open" src="{{dests.img.url}}" ></div>
 							<div class="top_item_content">
 								<div class="top_item_price">Price ₹ {{dest.price}}</div>
 								<div class="top_item_text">{{dest.name}}</div>
@@ -86,15 +91,34 @@
 						</a>
 					</div>
 				</div>
-				{% endfor %}
 
+						{% endfor %}
+				 <!--Creates the popup body-->
+				 <div id="overlay" style="display:none;"></div>
+				<div class="popup-overlay">
+				  <!--Creates the popup content-->
+				  <div class="popup-content">
+					<div class="body">
+							<div class="imagefild">
+								<img class="image_get" src=""/>
+							</div>					
+							<div class="text">			
+								<div class="header__pop">
+									<h2 class="header_title"> </h2>
+									<p class="details_text"></p>
+									<button >Book Now</button>
+								</div>						
+							</div>
+					</div>
+					<!--popup's close button-->
+					<button class="close">X</button> </div>
+				</div>
             </div>
         </div>
     </div>
+	{% if user.is_authenticated %}
 	<div class="last">
-		<!-- Image by https://unsplash.com/@thanni -->
 		<div class="last_background parallax-window" data-parallax="scroll" data-image-src="{% static 'images/last.jpg' %}" data-speed="0.8"></div>
-
 		<div class="container">
 			<div class="row">
 				<div class="last_logo"><img src="{% static 'images/last_logo.png' %}" alt=""></div>
@@ -123,11 +147,11 @@
 			</div>
 		</div>
 	</div>
-
+{% endif %}
 	<!-- Video -->
 
 	<div class="video_section d-flex flex-column align-items-center justify-content-center">
-		<!-- Image by https://unsplash.com/@peecho -->
+		
 		<div class="video_background parallax-window" data-parallax="scroll" data-image-src="{% static 'images/video.jpg' %}" data-speed="0.8"></div>
 		<div class="video_content">
 			<div class="video_title">A day on the Himalyas</div>
@@ -153,7 +177,7 @@
 			<div class="row">
 				<div class="col">
 					<div class="section_title text-center">
-						<h2>Popular destinations in 2018</h2>
+						<h2>Popular Destinations in 2018</h2>
 						<div>take a look at these offers</div>
 					</div>
 				</div>
@@ -161,19 +185,12 @@
 
 
 			<div class="row">
-
 				<div class="col">
-
-
 					<div class="popular_content d-flex flex-md-row flex-column flex-wrap align-items-md-center align-items-start justify-content-md-between justify-content-start">
-
-
 						{% for pdest in popular_dest %}
 						<!-- Popular Item -->
 						<div class="popular_item">
-
-							<a href="news">
-								<img src="{{pdest.img.url}}">
+							<div class="top_item_image"><img data-desc="{{pdest.detail}}" dat-text="{{pdest.name}}" class="open" src="{{pdest.img.url}}" ></div>
 								<div class="popular_item_content">
 									<div class="popular_item_price">From ₹ {{pdest.price}}</div>
 									<div class="popular_item_title">{{pdest.name}}</div>
@@ -182,10 +199,8 @@
 						</div>
 						{% endfor %}
 					</div>
-
 				</div>
 			</div>
-
 		</div>
 	</div>
 
@@ -198,8 +213,8 @@
 			<div class="row">
 				<div class="col">
 					<div class="section_title text-center">
-						<h2>Special offers</h2>
-						<div>take a look at these offers</div>
+						<h2>Weekend Getaways</h2>
+						<div>Take a look at these homestays</div>
 					</div>
 				</div>
 			</div>
@@ -211,7 +226,7 @@
 					<!-- Special Offers Item -->
 					<div class="owl-item">
 						<div class="special_item">
-							<div class="special_item_background"><img src="{{soffers.img.url}}" alt="https://unsplash.com/@garciasaldana_"></div>
+							<div class="special_item_background"><img src="{{soffers.img.url}}" alt="{{soffers.name}}"></div>
 							<div class="special_item_content text-center">
 								<div class="special_category">{{soffers.category}}</div>
 								<div class="special_title"><a href="offers.html">{{soffers.name}}</a></div>
@@ -219,8 +234,6 @@
 						</div>
 					</div>
                     {% endfor %}
-
-
 				</div>
 
 				<div class="special_slider_nav d-flex flex-column align-items-center justify-content-center">
@@ -233,7 +246,6 @@
 	<!-- Newsletter -->
 
 	<div class="newsletter">
-		<!-- Image by https://unsplash.com/@garciasaldana_ -->
 		<div class="newsletter_background" style="background-image:url({% static 'images/newsletter.jpg' %})"></div>
 		<div class="container">
 			<div class="row">
@@ -275,11 +287,10 @@
 						<div class="footer_about_text">{{thought.text}}</div>
 						{% endfor %}
 						<div class="copyright">
-Copyright &copy;<script>document.write(new Date().getFullYear());</script> All rights reserved
-</div>
+							Copyright  All rights reserved
+						</div>
 					</div>
 				</div>
-
 				<!-- Footer Column -->
 				<div class="col-lg-4 footer_col">
 					<div class="footer_latest">
@@ -329,9 +340,8 @@ Copyright &copy;<script>document.write(new Date().getFullYear());</script> All r
 			</div>
 		</div>
 	</footer>
-</div>
-
-<script src="{% static 'js/jquery-3.2.1.min.js' %}"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<!--<script src="{% static 'js/jquery-3.2.1.min.js' %}"></script>-->
 <script src="{% static 'styles/bootstrap4/popper.js' %}"></script>
 <script src="{% static 'styles/bootstrap4/bootstrap.min.js' %}"></script>
 <script src="{% static 'plugins/OwlCarousel2-2.2.1/owl.carousel.js' %}"></script>
@@ -339,6 +349,31 @@ Copyright &copy;<script>document.write(new Date().getFullYear());</script> All r
 <script src="{% static 'plugins/parallax-js-master/parallax.min.js' %}"></script>
 <script src="{% static 'plugins/magnific-popup/jquery.magnific-popup.min.js' %}"></script>
 <script src="{% static 'js/custom.js' %}"></script>
+<script>
+//appends an "active" class to .popup and .popup-content when the "Open" button is clicked
+jQuery(".open").on("click", function() {
+jQuery("#overlay").show();
+  jQuery(".popup-overlay, .popup-content").addClass("active");
+  var dynamic= jQuery(this).attr("dat-text");
+  var dynamictext= jQuery(this).attr("data-desc");
+  jQuery(".text .details_text").text(dynamictext);
+  //alert(dynamictext);
+  jQuery(".header_title").text(dynamic);
+  var image = jQuery(this).attr("src");
+  jQuery(".image_get").attr('src', image);
+ //alert(image);
+});
+
+//removes the "active" class to .popup and .popup-content when the "Close" button is clicked
+$(".close, #overlay").on("click", function() {
+jQuery("#overlay").hide();
+  $(".popup-overlay, .popup-content").removeClass("active");
+});
+</script>
+</div>
+
+
+
 </body>
 
 

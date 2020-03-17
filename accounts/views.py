@@ -1,7 +1,14 @@
 from django.shortcuts import render, redirect
+from django.urls import reverse
 from django.contrib import messages
 from django.contrib.auth.models import User, auth
 
+from django.contrib.auth.forms import UserChangeForm
+
+from accounts.forms import (
+    RegistrationForm,
+    EditProfileForm
+)
 # Create your views here.
 
 def login(request):
@@ -58,3 +65,25 @@ def logout(request):
     auth.logout(request)
     return redirect('/')
 
+def profile(request):
+    return render(request, 'profile.html')
+
+def view_profile(request, pk=None):
+    if pk:
+        user = User.objects.get(pk=pk)
+    else:
+        user = request.user
+    args = {'user': user}
+    return render(request, 'profile.html', args)
+
+def edit_profile(request):
+    if request.method == 'POST':
+        form = EditProfileForm(request.POST, instance=request.user)
+
+        if form.is_valid():
+            form.save()
+            return redirect('profile')
+    else:
+        form = EditProfileForm(instance=request.user)
+        args = {'form': form}
+        return render(request, 'edit_profile.html', args)

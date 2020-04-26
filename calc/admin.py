@@ -1,10 +1,11 @@
 from django.contrib import admin
 from .models import *
 
-
 # Register your models here.
-admin.site.register(Upcoming_destination)
-admin.site.register(Popular_destinations)
+
+class DestinationsAdmin(admin.ModelAdmin):
+    list_display = ("name", "categories","duration","price","img","activities","region")
+admin.site.register(Destinations, DestinationsAdmin)
 admin.site.register(Special_offers)
 admin.site.register(Home_background)
 admin.site.register(Thought)

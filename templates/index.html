@@ -3,14 +3,8 @@
 {% load static %}
 	<!-- Home -->
 	{% for home_back in home_back %}
-
 	<div class="home">
-
-
 		<div class="home_background" style="background-image:url({{home_back.background_image.url}})"></div>
-
-
-
 		<div class="home_content">
 			<div class="home_content_inner">
 				<div class="home_text_large">{{home_back.text_large}}</div>
@@ -22,8 +16,6 @@
 
 	<!-- Find Form -->
 
-
-
 	<div class="find">
 		<div class="find_background parallax-window" data-parallax="scroll" data-image-src="{% static 'images/find.jpg' %}" data-speed="0.8"></div>
 		<div class="container">
@@ -33,19 +25,17 @@
 				</div>
 				<div class="col-12">
 					<div class="find_form_container">
-						<form method="GET" id="find_form" class="find_form d-flex flex-md-row flex-column align-items-md-center align-items-start justify-content-md-between justify-content-start flex-wrap">
-							{% csrf_token %}
+						<form method="get" action="{% url 'search_results' %}" id="find_form" class="find_form d-flex flex-md-row flex-column align-items-md-center align-items-start justify-content-md-between justify-content-start flex-wrap">
 							<div class="find_item">
 								<div>Destination:</div>
-								<input type="text"  name="name" id="name" class="destination find_input" required="required" placeholder="Keyword here">
+								<input type="text"  name="q" id="name" class="destination find_input" required="required" placeholder="Keyword here">
 							</div>
 							<div class="find_item">
 								<div>Adventure type:</div>
-								<select name="CHOICES" id="Type" class="dropdown_item_select find_input">
-									<option value="w">WildLife</option>
-									<option value="a">Advan</option>
-									<option value="f">Widthfrandes</option>
-									<option value="s">Solo</option>
+								<select name="q" id="Type" class="dropdown_item_select find_input">
+									<option value="SOLO">SOLO</option>
+            						<option value="FAMILY">FAMILY</option>
+            						<option value="GROUP">GROUP</option>
 								</select>
 							</div>
 							<div class="find_item">
@@ -56,7 +46,7 @@
 									<option>Price</option>
 								</select>
 							</div>
-							<button class="button find_button" type="submit">Find</button>
+							<button class="button find_button" name="submit">Find</button>
 						</form>
 					</div>
 				</div>
@@ -71,28 +61,28 @@
 			<div class="row">
 				<div class="col">
 					<div class="section_title text-center">
-						<h2>Destinations</h2>
-						<div>Take A Look At These Mountains </div>
+						<h2>Upcomming Destinations</h2>
+						<div>Take A Look At These Destinations </div>
 					</div>
 				</div>
 			</div>
 			<div class="row top_content">
-						{% for dests in top_dest %}
+				{% for e in even %}
 				<div class="col-lg-3 col-md-6 top_col">
 
 					<!-- Top Destination Item -->
 					<div class="top_item">
 
-							<div class="top_item_image"><img data-desc="{{dests.detail}}" dat-text="{{dests.name}}" class="open" src="{{dests.img.url}}" ></div>
+							<div class="top_item_image"><img data-desc="{{e.detail}}" dat-text="{{e.name}}" class="open" src="{{e.img.url}}" ></div>
 							<div class="top_item_content">
-								<div class="top_item_price">Price ₹ {{dest.price}}</div>
-								<div class="top_item_text">{{dest.name}}</div>
+								<div class="top_item_price">Price ₹ {{e.price}}</div>
+								<div class="top_item_text">{{e.name}}</div>
 							</div>
 						</a>
 					</div>
 				</div>
 
-						{% endfor %}
+				{% endfor %}
 				 <!--Creates the popup body-->
 				 <div id="overlay" style="display:none;"></div>
 				<div class="popup-overlay">
@@ -170,7 +160,7 @@
 		</div>
 	</div>
 
-	<!-- Popular -->
+	<!-- Popular
 
 	<div class="popular">
 		<div class="container">
@@ -188,7 +178,7 @@
 				<div class="col">
 					<div class="popular_content d-flex flex-md-row flex-column flex-wrap align-items-md-center align-items-start justify-content-md-between justify-content-start">
 						{% for pdest in popular_dest %}
-						<!-- Popular Item -->
+
 						<div class="popular_item">
 							<div class="top_item_image"><img data-desc="{{pdest.detail}}" dat-text="{{pdest.name}}" class="open" src="{{pdest.img.url}}" ></div>
 								<div class="popular_item_content">
@@ -204,7 +194,7 @@
 		</div>
 	</div>
 
-
+-->
 
 	<!-- Special -->
 

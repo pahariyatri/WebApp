@@ -1,8 +1,9 @@
+from .models import Snippet
 from django import forms
 from django.contrib.auth.models import User
-from django.contrib.auth.forms import UserCreationForm, UserChangeForm
+from django.contrib.auth.forms import UserCreationForm
+from .models import UserProfileInfo
 
-from accounts.models import UserProfile
 
 
 class RegistrationForm(UserCreationForm):
@@ -31,14 +32,24 @@ class RegistrationForm(UserCreationForm):
         return user
 
 
-class EditProfileForm(UserChangeForm):
-    template_name='/something/else'
+
+class SnippetForm(forms.ModelForm):
 
     class Meta:
+        model = Snippet
+        fields = ('name', 'body')
+
+
+
+class UserForm(forms.ModelForm):
+    password = forms.CharField(widget=forms.PasswordInput())
+    class Meta():
         model = User
-        fields = (
-            'email',
-            'first_name',
-            'last_name',
-            'password'
-        )
+        fields = ('username','password','email')
+
+
+class UserProfileInfoForm(forms.ModelForm):
+     class Meta():
+         model = UserProfileInfo
+         fields = ('portfolio_site','profile_pic')
+

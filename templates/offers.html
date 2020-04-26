@@ -3,7 +3,7 @@
 {% load static %}
 <html lang="en">
 <head>
-<title>Offers</title>
+<title>destinations</title>
 
 <link rel="stylesheet" type="text/css" href="{% static 'css/offers_styles.css' %}">
 <link rel="stylesheet" type="text/css" href="{% static 'css/offers_responsive.css' %}">
@@ -26,11 +26,11 @@
 				<div class="col">
 					<div class="home_content">
 						<div class="home_content_inner">
-							<div class="home_title">Offers</div>
+							<div class="home_title">Destinations</div>
 							<div class="home_breadcrumbs">
 								<ul class="home_breadcrumbs_list">
-									<li class="home_breadcrumb"><a href="index">Home</a></li>
-									<li class="home_breadcrumb">Offers</li>
+									<li class="home_breadcrumb"><a href="/index">Home</a></li>
+									<li class="home_breadcrumb">Destinations</li>
 								</ul>
 							</div>
 						</div>
@@ -165,20 +165,19 @@
 			<div class="row">
 				<div class="col">
 					<div class="items item_grid clearfix">
-
 						{% for e in even %}
-
 						<!-- Item -->
 						<div class="item clearfix rating_5">
 							<a href="news">
-							<div class="item_image"><img src="{{e.img.url}}" alt=""></div>
+							<div class="item_image"><img src="{{e.img.url}}" alt="{{e.name}}"></div>
 							<div class="item_content">
 								<div class="item_price">From ₹ {{e.price}}</div>
-								<div class="item_title">{{e.destination}}, India</div>
+								<div class="item_title">{{e.name}}, India</div>
 								<ul>
-									<li>Difficulty Level {{e.difficulty}}</li>
-									<li>{{e.day}} days</li>
-									<li>{{e.night}} nights</li>
+									<li>{{e.acticities}}</li>
+									<li>{{e.region}}</li>
+									<li>{{e.duration}} days</li>
+
 								</ul>
 								<div class="rating rating_5" data-rating="5">
 									<i class="fa fa-star"></i>
@@ -188,24 +187,9 @@
 									<i class="fa fa-star"></i>
 								</div>
 								<div class="item_text">{{e.detail}}</div>
-								
-
-							<div class="razorpay-embed-btn" data-url="https://rzp.io/l/r4b4VKF" data-text="Pay Now" data-color="#528FF0" data-size="small">
-  <script>
-    (function(){
-      var d=document; var x=!d.getElementById('razorpay-embed-btn-js')
-      if(x){ var s=d.createElement('script'); s.defer=!0;s.id='razorpay-embed-btn-js';
-      s.src='https://cdn.razorpay.com/static/embed_btn/bundle.js';d.body.appendChild(s);} else{var rzp=window['__rzp__'];
-      rzp && rzp.init && rzp.init()}})();
-  </script>
-</div>
-
 							</div>
 						</div>
 						{% endfor %}
-
-
-
 					</div>
 				</div>
 			</div>
@@ -214,9 +198,7 @@
 					<div class="pages">
 						<ul class="pages_list">
 							<li class="page active"><a href="#">01.</a></li>
-							<li class="page"><a href="#">02.</a></li>
-							<li class="page"><a href="#">03.</a></li>
-							<li class="page"><a href="#">04.</a></li>
+
 						</ul>
 					</div>
 				</div>
@@ -262,7 +244,7 @@
 							<div class="logo">
 								<div>Pahari Yatri</div>
 								<div>A curly boy who travel</div>
-								<div class="logo_image"><img src="{% static 'images/logo.png' %}" alt=""></div>
+
 							</div>
 						</div>
 						<div class="footer_about_text">A ' Pahari Yatri ' Who a one  avid Traveler, a day-night dreamer and a soul wandering in the Himalayas.  I love to wander on the Mountains less traveled and love telling the world about them. I dream to travel the world.</div>

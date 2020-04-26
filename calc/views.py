@@ -1,46 +1,48 @@
-
 from django.shortcuts import render, redirect
-from .filters import DestinationFilter
-from .models import Popular_destinations, Upcoming_destination, Special_offers, Home_background, Thought
-
-
+from .models import Special_offers, Home_background, Thought
+from .models import Destinations
+from django.http import *
+from django.db.models import Q
+from django.views.generic import ListView
+from django.contrib import messages
+from django.contrib.auth.models import User, auth
+from datetime import datetime, timedelta
+startdate = datetime.today()
+enddate = startdate + timedelta(days=9)
 
 def index(request):
-    pdests = Popular_destinations.objects.all()
-
-    myFilter = DestinationFilter(request.GET, queryset=pdests)
-    pdests = myFilter.qs
-
-    dests = Upcoming_destination.objects.all()
+    eve = Destinations.objects.filter(date__range=[startdate, enddate])
     soffers = Special_offers.objects.all()
     home = Home_background.objects.all()
     thought = Thought.objects.all()
-
-    destination = {
+    d = {
+        "even": eve,
         "home_back": home,
-        "popular_dest": pdests,
-        "filter_": myFilter,
-        "top_dest": dests,
         "special_offers": soffers,
         "thoug": thought
     }
-    return render(request, 'index.html', destination)
-
-
-
-def about(request):
-    return render(request, 'about.html')
-
-def contact(request):
-    return render(request, 'contact.html')
+    return render(request, 'index.html', d)
 
 def offers(request):
-    eve = Event.objects.all()
+    eve = Destinations.objects.all()
+
     ev = {
         "even": eve
     }
+
     return render(request, 'offers.html',ev)
 
-def news(request):
-    return render(request, 'news.html')
+#class HomePageView(TemplateView):
+    template_name = 'index.html'
 
+
+class SearchResultsView(ListView):
+    model = Destinations
+    template_name = 'search_results.html'
+
+    def get_queryset(self):
+        query = self.request.GET.get('q')
+        object_list = Destinations.objects.filter(
+            Q(name__icontains=query) | Q(categories__exact=query)
+        )
+        return object_list

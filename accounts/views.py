@@ -24,7 +24,7 @@ def user_login(request):
             return redirect('user_login')
 
     else:
-        return render(request, 'Home')
+        return render(request, '/')
 
 
 def user_register(request):

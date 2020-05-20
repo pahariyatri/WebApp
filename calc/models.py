@@ -13,8 +13,6 @@ class Home_background(models.Model):
     text_large = models.CharField(max_length=15)
     text_small = models.CharField(max_length=25)
     background_image = models.ImageField(upload_to='pics')
-
-
 """
 class Upcoming_destination(models.Model):
     name = models.CharField(max_length=100)
@@ -55,7 +53,9 @@ class Special_offers(models.Model):
     img = models.ImageField(upload_to='pics')
 
 class Thought(models.Model):
+    name = models.CharField(max_length=50)
     text = models.CharField(max_length=1000)
+    img = models.ImageField(upload_to='pics')
 
 class Destinations(models.Model):
     name = models.CharField(max_length=100)

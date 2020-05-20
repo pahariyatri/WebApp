@@ -1,370 +1,373 @@
-{% include "base.html" %}
+{% extends "base.html" %}
 {% block content %}
 {% load static %}
-	<!-- Home -->
-	{% for home_back in home_back %}
-	<div class="home">
-		<div class="home_background" style="background-image:url({{home_back.background_image.url}})"></div>
-		<div class="home_content">
-			<div class="home_content_inner">
-				<div class="home_text_large">{{home_back.text_large}}</div>
-				<div class="home_text_small">{{home_back.text_small}}</div>
-			</div>
-		</div>
-	</div>
-	{% endfor %}
 
-	<!-- Find Form -->
 
-	<div class="find">
-		<div class="find_background parallax-window" data-parallax="scroll" data-image-src="{% static 'images/find.jpg' %}" data-speed="0.8"></div>
-		<div class="container">
-			<div class="row">
-				<div class="col-12">
-					<div class="find_title text-center">Find the Adventure of a lifetime</div>
-				</div>
-				<div class="col-12">
-					<div class="find_form_container">
-						<form method="get" action="{% url 'search_results' %}" id="find_form" class="find_form d-flex flex-md-row flex-column align-items-md-center align-items-start justify-content-md-between justify-content-start flex-wrap">
-							<div class="find_item">
-								<div>Destination:</div>
-								<input type="text"  name="q" id="name" class="destination find_input" required="required" placeholder="Keyword here">
-							</div>
-							<div class="find_item">
-								<div>Adventure type:</div>
-								<select name="q" id="Type" class="dropdown_item_select find_input">
+
+
+    <!-- slider_area_start -->
+    <div class="slider_area">
+        <div class="slider_active owl-carousel">
+
+            <div class="single_slider  d-flex align-items-center slider_bg_1 overlay">
+
+                <div class="container">
+                    <div class="row align-items-center">
+                        <div class="col-xl-12 col-md-12">
+                            <div class="slider_text text-center">
+                                <h3>Indonesia</h3>
+                                <p>Pixel perfect design with awesome contents</p>
+                                <a href="#" class="boxed-btn3">Explore Now</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="single_slider  d-flex align-items-center slider_bg_2 overlay">
+                <div class="container">
+                    <div class="row align-items-center">
+                        <div class="col-xl-12 col-md-12">
+                            <div class="slider_text text-center">
+                                <h3>Australia</h3>
+                                <p>Pixel perfect design with awesome contents</p>
+                                <a href="#" class="boxed-btn3">Explore Now</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="single_slider  d-flex align-items-center slider_bg_3 overlay" >
+                <div class="container">
+                    <div class="row align-items-center">
+                        <div class="col-xl-12 col-md-12">
+                            <div class="slider_text text-center">
+                                <h3>Switzerland</h3>
+                                <p>Pixel perfect design with awesome contents</p>
+                                <a href="#" class="boxed-btn3">Explore Now</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+    <!-- slider_area_end -->
+
+  <!-- where_togo_area_start  -->
+    <div class="where_togo_area">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-lg-3">
+                    <div class="form_area">
+                        <h3>Where you want to go?</h3>
+                    </div>
+                </div>
+                <div class="col-lg-9">
+                    <div class="search_wrap">
+                        <form class="search_form" method="get" action="{% url 'search_results' %}">
+                            <div class="input_field">
+                                <input type="text"  name="q" id="name" placeholder="Where to go?">
+                            </div>
+                             <div class="input_field">
+                                <input id="datepicker" placeholder="Date">
+                            </div>
+                            <div class="input_field">
+                               <select name="q" id="Type">
+                                   <option data-display="Travel type">Travel type</option>
 									<option value="SOLO">SOLO</option>
             						<option value="FAMILY">FAMILY</option>
             						<option value="GROUP">GROUP</option>
+                                   <option value="ROMANTIC">ROMANTIC</option>
 								</select>
-							</div>
-							<div class="find_item">
-								<div>Min price</div>
-								<select name="price" id="price" class="dropdown_item_select find_input">
-									<option>&nbsp;</option>
-									<option>Price</option>
-									<option>Price</option>
-								</select>
-							</div>
-							<button class="button find_button" name="submit">Find</button>
-						</form>
-					</div>
-				</div>
-			</div>
-		</div>
-	</div>
+                            </div>
 
-	<!-- Top Destinations -->
 
-	<div class="top">
-		<div class="container">
-			<div class="row">
-				<div class="col">
-					<div class="section_title text-center">
-						<h2>Upcomming Destinations</h2>
-						<div>Take A Look At These Destinations </div>
-					</div>
-				</div>
-			</div>
-			<div class="row top_content">
-				{% for e in even %}
-				<div class="col-lg-3 col-md-6 top_col">
-
-					<!-- Top Destination Item -->
-					<div class="top_item">
-
-							<div class="top_item_image"><img data-desc="{{e.detail}}" dat-text="{{e.name}}" class="open" src="{{e.img.url}}" ></div>
-							<div class="top_item_content">
-								<div class="top_item_price">Price ₹ {{e.price}}</div>
-								<div class="top_item_text">{{e.name}}</div>
-							</div>
-						</a>
-					</div>
-				</div>
-
-				{% endfor %}
-				 <!--Creates the popup body-->
-				 <div id="overlay" style="display:none;"></div>
-				<div class="popup-overlay">
-				  <!--Creates the popup content-->
-				  <div class="popup-content">
-					<div class="body">
-							<div class="imagefild">
-								<img class="image_get" src=""/>
-							</div>					
-							<div class="text">			
-								<div class="header__pop">
-									<h2 class="header_title"> </h2>
-									<p class="details_text"></p>
-									<button >Book Now</button>
-								</div>						
-							</div>
-					</div>
-					<!--popup's close button-->
-					<button class="close">X</button> </div>
-				</div>
+                            <div class="search_btn">
+                                <button class="boxed-btn4 " type="submit" name="submit" >Search</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
-	{% if user.is_authenticated %}
-	<div class="last">
-		<div class="last_background parallax-window" data-parallax="scroll" data-image-src="{% static 'images/last.jpg' %}" data-speed="0.8"></div>
-		<div class="container">
-			<div class="row">
-				<div class="last_logo"><img src="{% static 'images/last_logo.png' %}" alt=""></div>
-				<div class="col-lg-6 last_col">
-					<div class="last_item">
-						<div class="last_item_content">
-							<div class="last_subtitle">Kareri lake</div>
-							<div class="last_percent">30%</div>
-							<div class="last_title">Last Minute Offer</div>
-							<div class="last_text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer pulvinar sed mauris eget tincidunt. Sed lectus nulla, tempor vel.</div>
-							<div class="button last_button"><a href="offers">See Offer</a></div>
-						</div>
-					</div>
+    <!-- where_togo_area_end  -->
+    <div class="popular_places_area">
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-lg-6">
+                    <div class="section_title text-center mb_70">
+                        <h3>Upcoming Destination</h3>
+                        <p>Suffered alteration in some form, by injected humour or good day randomised booth anim 8-bit hella wolf moon beard words.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+		{% for e in even %}
+                <div class="col-lg-4 col-md-6">
+                    <div class="single_place">
+                        <div class="thumb">
+                            <img data-desc="{{e.detail}}" dat-text="{{e.name}}" class="open" src="{{e.img.url}}" >
+                            <a href="#" class="prise">₹ {{e.price}}</a>
+                        </div>
+                        <div class="place_info">
+                            <a href="destination_details.html"><h3>{{e.name}}</h3></a>
+                            <p>{{e.region}}</p>
+                            <div class="rating_days d-flex justify-content-between">
+                                <span class="d-flex justify-content-center align-items-center">
+                                     <i class="fa fa-star"></i>
+                                     <i class="fa fa-star"></i>
+                                     <i class="fa fa-star"></i>
+                                     <i class="fa fa-star"></i>
+                                     <i class="fa fa-star"></i>
+                                     <a href="#">(20 Review)</a>
+                                </span>
+                                <div class="days">
+                                    <i class="fa fa-clock-o"></i>
+                                    <a href="#">{{e.duration}} days</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+		{% endfor %}
+
+      	</div>
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="more_place_btn text-center">
+                        <a class="boxed-btn4" href="/destination">More Places</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+<div class="video_area video_bg overlay">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="video_wrap text-center">
+                        <h3>Enjoy Video</h3>
+                        <div class="video_icon">
+                            <a class="popup-video video_play_button" href="https://www.youtube.com/watch?v=f59dDEk57i0">
+                                <i class="fa fa-play"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- popular_destination_area_start  -->
+    <div class="popular_destination_area">
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-lg-6">
+                    <div class="section_title text-center mb_70">
+                        <h3>Popular Destination</h3>
+                        <p>Suffered alteration in some form, by injected humour or good day randomised booth anim 8-bit hella wolf moon beard words.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-lg-4 col-md-6">
+                    <div class="single_destination">
+                        <div class="thumb">
+                            <img src="{% static 'img/category/water+activities.jpeg' %}" alt="">
+                        </div>
+                        <div class="content">
+                            <p class="d-flex align-items-center">Italy <a href="travel_destination.html">  07 Places</a> </p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6">
+                    <div class="single_destination">
+                        <div class="thumb">
+                            <img src="img/destination/2.png" alt="">
+                        </div>
+                        <div class="content">
+                            <p class="d-flex align-items-center">Brazil <a href="travel_destination.html">  03 Places</a> </p>
+
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6">
+                    <div class="single_destination">
+                        <div class="thumb">
+                            <img src="img/destination/3.png" alt="">
+                        </div>
+                        <div class="content">
+                            <p class="d-flex align-items-center">America <a href="travel_destination.html">  10 Places</a> </p>
+
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6">
+                    <div class="single_destination">
+                        <div class="thumb">
+                            <img src="img/destination/4.png" alt="">
+                        </div>
+                        <div class="content">
+                            <p class="d-flex align-items-center">Nepal <a href="travel_destination.html">  02 Places</a> </p>
+
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6">
+                    <div class="single_destination">
+                        <div class="thumb">
+                            <img src="img/destination/5.png" alt="">
+                        </div>
+                        <div class="content">
+                            <p class="d-flex align-items-center">Maldives <a href="travel_destination.html">  02 Places</a> </p>
+
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6">
+                    <div class="single_destination">
+                        <div class="thumb">
+                            <img src="img/destination/6.png" alt="">
+                        </div>
+                        <div class="content">
+                            <p class="d-flex align-items-center">Indonesia <a href="travel_destination.html">  05 Places</a> </p>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- popular_destination_area_end  -->
+
+
+
+
+
+    <!-- testimonial_area  -->
+    <div class="testimonial_area">
+        <div class="container">
+            <div class="row">
+                <div class="col-xl-12">
+                    <div class="testmonial_active owl-carousel">
+			{% for thought in thoug %}
+                        <div class="single_carousel">
+                            <div class="row justify-content-center">
+                                <div class="col-lg-8">
+                                    <div class="single_testmonial text-center">
+                                        <div class="author_thumb">
+                                            <img src="{{thought.img.url}}"  class="m" alt="">
+                                        </div>
+                                        <p>{{thought.text}}</p>
+                                        <div class="testmonial_author">
+                                            <h3>- {{thought.name}}</h3>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+			{% endfor %}
+                   
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- /testimonial_area  -->
+
+<!-- newletter_area_start  -->
+        <div class="newletter_area overlay">
+            <div class="container">
+                <div class="row justify-content-center align-items-center">
+                    <div class="col-lg-10">
+                        <div class="row align-items-center">
+                            <div class="col-lg-5">
+                                <div class="newsletter_text">
+                                    <h4>Subscribe Our Newsletter</h4>
+                                    <p>Subscribe newsletter to get offers and about
+                                        new places to discover.</p>
+                                </div>
+                            </div>
+                            <div class="col-lg-7">
+                                <div class="mail_form">
+                                    <div class="row no-gutters">
+                                        <div class="col-lg-9 col-md-8">
+                                            <div class="newsletter_field">
+                                                <input type="email" placeholder="Your mail" >
+                                            </div>
+                                        </div>
+                                        <div class="col-lg-3 col-md-4">
+                                            <div class="newsletter_btn">
+                                                <button class="boxed-btn4 " type="submit" >Subscribe</button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- newletter_area_end  -->
+
+ <div class="travel_variation_area">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-4 col-md-6">
+                    <div class="single_travel text-center">
+                        <div class="icon">
+                            <img src="{% static 'img/svg_icon/1.svg' %}" alt="">
+                        </div>
+                        <h3>Comfortable Journey</h3>
+                        <p>A wonderful serenity has taken to the possession of my entire soul.</p>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6">
+                    <div class="single_travel text-center">
+                        <div class="icon">
+                            <img src="{% static 'img/svg_icon/2.svg' %}" alt="">
+                        </div>
+                        <h3>Luxuries Hotel</h3>
+                        <p>A wonderful serenity has taken to the possession of my entire soul.</p>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6">
+                    <div class="single_travel text-center">
+                        <div class="icon">
+                            <img src="{% static 'img/svg_icon/3.svg' %}" alt="">
+                        </div>
+                        <h3>Travel Guide</h3>
+                        <p>A wonderful serenity has taken to the possession of my entire soul.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+<!--Creates the popup body-->
+				 <div id="overlay" style="display:none;"></div>
+			    	<div class="popup-overlay">
+				  <!--Creates the popup content-->
+				         <div class="popup-content">
+                             <div class="body">
+							    <div class="imagefild">
+								    <img class="image_get" src=""/>
+						    	</div>
+							    <div class="text">
+								    <div class="header__pop">
+								    	<h2 class="header_title"> </h2>
+									    <p class="details_text"></p>
+									    <button >Book Now</button>
+							    	</div>
+							    </div>
+                             </div>
+					<!--popup's close button-->
+					<button class="close">X</button> </div>
 				</div>
-				<div class="col-lg-6 last_col">
-					<div class="last_item">
-						<div class="last_item_content">
-							<div class="last_subtitle">Sainj Valley</div>
-							<div class="last_percent">20%</div>
-							<div class="last_title">Last Minute Offer</div>
-							<div class="last_text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer pulvinar sed mauris eget tincidunt. Sed lectus nulla, tempor vel.</div>
-							<div class="button last_button"><a href="offers">See Offer</a></div>
-						</div>
-					</div>
-				</div>
-			</div>
-		</div>
-	</div>
-{% endif %}
-	<!-- Video -->
-
-	<div class="video_section d-flex flex-column align-items-center justify-content-center">
-		
-		<div class="video_background parallax-window" data-parallax="scroll" data-image-src="{% static 'images/video.jpg' %}" data-speed="0.8"></div>
-		<div class="video_content">
-			<div class="video_title">A day on the Himalyas</div>
-			<div class="video_subtitle">A trip organized by Pahari Yatri's team</div>
-			<div class="video_play">
-				<a  class="video" href="https://youtu.be/KDZq24L8u3Y">
-					<svg version="1.1" id="Layer_1" class="play_button" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
-						 width="140px" height="140px" viewBox="0 0 140 140" enable-background="new 0 0 140 140" xml:space="preserve">
-						<g id="Layer_2">
-							<circle class="play_circle" fill="none" stroke="#FFFFFF" stroke-width="2" stroke-miterlimit="10" cx="70.333" cy="69.58" r="68.542"/>
-							<polygon class="play_triangle" fill="none" stroke="#FFFFFF" stroke-width="2" stroke-miterlimit="10" points="61.583,56 61.583,84.417 84.75,70 	"/>
-						</g>
-					</svg>
-				</a>
-			</div>
-		</div>
-	</div>
-
-	<!-- Popular
-
-	<div class="popular">
-		<div class="container">
-			<div class="row">
-				<div class="col">
-					<div class="section_title text-center">
-						<h2>Popular Destinations in 2018</h2>
-						<div>take a look at these offers</div>
-					</div>
-				</div>
-			</div>
-
-
-			<div class="row">
-				<div class="col">
-					<div class="popular_content d-flex flex-md-row flex-column flex-wrap align-items-md-center align-items-start justify-content-md-between justify-content-start">
-						{% for pdest in popular_dest %}
-
-						<div class="popular_item">
-							<div class="top_item_image"><img data-desc="{{pdest.detail}}" dat-text="{{pdest.name}}" class="open" src="{{pdest.img.url}}" ></div>
-								<div class="popular_item_content">
-									<div class="popular_item_price">From ₹ {{pdest.price}}</div>
-									<div class="popular_item_title">{{pdest.name}}</div>
-								</div>
-							</a>	
-						</div>
-						{% endfor %}
-					</div>
-				</div>
-			</div>
-		</div>
-	</div>
-
--->
-
-	<!-- Special -->
-
-	<div class="special">
-		<div class="container">
-			<div class="row">
-				<div class="col">
-					<div class="section_title text-center">
-						<h2>Weekend Getaways</h2>
-						<div>Take a look at these homestays</div>
-					</div>
-				</div>
-			</div>
-		</div>
-		<div class="special_content">
-			<div class="special_slider_container">
-				<div class="owl-carousel owl-theme special_slider">
-					{% for soffers in special_offers %}
-					<!-- Special Offers Item -->
-					<div class="owl-item">
-						<div class="special_item">
-							<div class="special_item_background"><img src="{{soffers.img.url}}" alt="{{soffers.name}}"></div>
-							<div class="special_item_content text-center">
-								<div class="special_category">{{soffers.category}}</div>
-								<div class="special_title"><a href="offers.html">{{soffers.name}}</a></div>
-							</div>
-						</div>
-					</div>
-                    {% endfor %}
-				</div>
-
-				<div class="special_slider_nav d-flex flex-column align-items-center justify-content-center">
-					<img src="{% static 'images/special_slider.png' %}" alt="">
-				</div>
-			</div>
-		</div>
-	</div>
-
-	<!-- Newsletter -->
-
-	<div class="newsletter">
-		<div class="newsletter_background" style="background-image:url({% static 'images/newsletter.jpg' %})"></div>
-		<div class="container">
-			<div class="row">
-				<div class="col-lg-10 offset-lg-1">
-					<div class="newsletter_content">
-						<div class="newsletter_title text-center">Subscribe to our Newsletter</div>
-						<div class="newsletter_form_container">
-							<form action="#" id="newsletter_form" class="newsletter_form">
-								<div class="d-flex flex-md-row flex-column align-content-center justify-content-between">
-									<input type="email" id="newsletter_input" class="newsletter_input" placeholder="Your E-mail Address">
-									<button type="submit" id="newsletter_button" class="newsletter_button">Subscribe</button>
-								</div>
-							</form>
-						</div>
-					</div>
-				</div>
-			</div>
-		</div>
-	</div>
-
 {% endblock content %}
-
-	<footer class="footer">
-		<div class="container">
-			<div class="row">
-
-				<!-- Footer Column -->
-				<div class="col-lg-4 footer_col">
-					<div class="footer_about">
-						<!-- Logo -->
-						<div class="logo_container">
-							<div class="logo">
-								<div>Pahari Yatri</div>
-								<div>A Curly Boy Who Travel</div>
-								<div class="logo_image"><img src="{% static 'images/logo.png' %}" alt=""></div>
-							</div>
-						</div>
-						{% for thought in thoug %}
-						<div class="footer_about_text">{{thought.text}}</div>
-						{% endfor %}
-						<div class="copyright">
-							Copyright  All rights reserved
-						</div>
-					</div>
-				</div>
-				<!-- Footer Column -->
-				<div class="col-lg-4 footer_col">
-					<div class="footer_latest">
-						<div class="footer_title">Latest News</div>
-						<div class="footer_latest_content">
-
-							<!-- Footer Latest Post -->
-							<div class="footer_latest_item">
-								<div class="footer_latest_image"><img src="{% static 'images/latest_1.jpg' %}" alt="https://unsplash.com/@peecho"></div>
-								<div class="footer_latest_item_content">
-									<div class="footer_latest_item_title"><a href="news.html">Manali Summer</a></div>
-									<div class="footer_latest_item_date">Jan 09, 2019</div>
-								</div>
-							</div>
-
-							<!-- Footer Latest Post -->
-							<div class="footer_latest_item">
-								<div class="footer_latest_image"><img src="{% static 'images/latest_2.jpg' %}" alt="https://unsplash.com/@sanfrancisco"></div>
-								<div class="footer_latest_item_content">
-									<div class="footer_latest_item_title"><a href="news.html">A perfect vacation</a></div>
-									<div class="footer_latest_item_date">March 05, 2019</div>
-								</div>
-							</div>
-
-						</div>
-					</div>
-				</div>
-
-				<!-- Footer Column -->
-				<div class="col-lg-4 footer_col">
-					<div class="tags footer_tags">
-						<div class="footer_title">Tags</div>
-						<ul class="tags_content d-flex flex-row flex-wrap align-items-start justify-content-start">
-							<li class="tag"><a href="#">travel</a></li>
-							<li class="tag"><a href="#">summer</a></li>
-							<li class="tag"><a href="#">cruise</a></li>
-							<li class="tag"><a href="#">beach</a></li>
-							<li class="tag"><a href="#">offer</a></li>
-							<li class="tag"><a href="#">vacation</a></li>
-							<li class="tag"><a href="#">trip</a></li>
-							<li class="tag"><a href="#">city break</a></li>
-							<li class="tag"><a href="#">adventure</a></li>
-						</ul>
-					</div>
-				</div>
-
-			</div>
-		</div>
-	</footer>
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-<!--<script src="{% static 'js/jquery-3.2.1.min.js' %}"></script>-->
-<script src="{% static 'styles/bootstrap4/popper.js' %}"></script>
-<script src="{% static 'styles/bootstrap4/bootstrap.min.js' %}"></script>
-<script src="{% static 'plugins/OwlCarousel2-2.2.1/owl.carousel.js' %}"></script>
-<script src="{% static 'plugins/easing/easing.js' %}"></script>
-<script src="{% static 'plugins/parallax-js-master/parallax.min.js' %}"></script>
-<script src="{% static 'plugins/magnific-popup/jquery.magnific-popup.min.js' %}"></script>
-<script src="{% static 'js/custom.js' %}"></script>
-<script>
-//appends an "active" class to .popup and .popup-content when the "Open" button is clicked
-jQuery(".open").on("click", function() {
-jQuery("#overlay").show();
-  jQuery(".popup-overlay, .popup-content").addClass("active");
-  var dynamic= jQuery(this).attr("dat-text");
-  var dynamictext= jQuery(this).attr("data-desc");
-  jQuery(".text .details_text").text(dynamictext);
-  //alert(dynamictext);
-  jQuery(".header_title").text(dynamic);
-  var image = jQuery(this).attr("src");
-  jQuery(".image_get").attr('src', image);
- //alert(image);
-});
-
-//removes the "active" class to .popup and .popup-content when the "Close" button is clicked
-$(".close, #overlay").on("click", function() {
-jQuery("#overlay").hide();
-  $(".popup-overlay, .popup-content").removeClass("active");
-});
-</script>
-</div>
-
-
-
-</body>
-
-
-

@@ -15,22 +15,39 @@ def index(request):
     soffers = Special_offers.objects.all()
     home = Home_background.objects.all()
     thought = Thought.objects.all()
+    adventure = Destinations.objects.filter(activities='ADVENTURE').count()
+    wildlife = Destinations.objects.filter(activities='WILDLIFE').count()
+    religous = Destinations.objects.filter(activities="RELIGOUS").count()
+    water_act = Destinations.objects.filter(activities="WATER_ACTIVITIES").count()
+
     d = {
         "even": eve,
         "home_back": home,
         "special_offers": soffers,
-        "thoug": thought
+        "thoug": thought,
+        "adventure":adventure,
+        "wildlife":wildlife,
+        "religous":religous,
+        "water_act":water_act,
     }
+    print(adventure)
+    print(wildlife)
+    print(religous)
+    print(water_act)
     return render(request, 'index.html', d)
 
 def offers(request):
     eve = Destinations.objects.all()
+    c = Destinations.objects.all().count()
 
     ev = {
-        "even": eve
+        "even": eve,
+        "c":c
     }
-
-    return render(request, 'offers.html',ev)
+    print('********')
+    print (c)
+    print(type(c))
+    return render(request, 'destination.html',ev, c)
 
 #class HomePageView(TemplateView):
     template_name = 'index.html'
@@ -38,11 +55,11 @@ def offers(request):
 
 class SearchResultsView(ListView):
     model = Destinations
-    template_name = 'search_results.html'
+    template_name = 'destination.html'
 
     def get_queryset(self):
         query = self.request.GET.get('q')
         object_list = Destinations.objects.filter(
-            Q(name__icontains=query) | Q(categories__exact=query)
+            Q(name__exact=query) | Q(categories__exact=query)
         )
         return object_list

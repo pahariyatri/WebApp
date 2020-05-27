@@ -64,10 +64,13 @@ class Destinations(models.Model):
     detail = models.CharField(max_length=1000, blank=True)
     region = models.CharField(max_length=100)
     DURA = (('3', '1 to 3'), ('5', '4 to 5'), ('7', '6 to 7'), ('10', 'more then week'))
-    CATE = (('SOLO', 'SOLO'), ('GROUP', 'GROUP'), ('FAMILY', 'FAMILY'), ('ROMANTIC', 'ROMANTIC'))
-    ACTI = (('ADVENTURE', 'ADVENTURE'), ('WILDLIFE', 'WILDLIFE'),('RELIGOUS', 'RELIGOUS'), ('WATER_ACTIVITIES', 'WATER_ACTIVITIES'))
+    CATE = (('ADVENTURE', 'ADVENTURE'), ('SOLO', 'SOLO'),
+            ('GROUP', 'GROUP'), ('RELIGOUS', 'RELIGOUS'),
+            ('WATER_ACTIVITIES', 'WATER_ACTIVITIES'),('NATURE', 'NATURE'),
+            ('FAMILY', 'FAMILY'), ('ROMANTIC', 'ROMANTIC'))
+
     categories = models.CharField(max_length=30, choices=CATE)
-    activities = models.CharField(max_length=30, choices=ACTI)
+
     duration = models.CharField(max_length = 50, choices=DURA)
     date = models.DateField()
 

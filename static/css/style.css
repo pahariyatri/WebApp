@@ -6691,3 +6691,86 @@ h6 {
 }
 
 
+
+
+#mixedSlider {
+  position: relative;
+}
+#mixedSlider .MS-content {
+  white-space: nowrap;
+  overflow: hidden;
+  margin: 0 5%;
+}
+#mixedSlider .MS-content .item {
+  display: inline-block;
+  width: 20%;
+
+  position: relative;
+  vertical-align: top;
+  overflow: hidden;
+  height: auto%;
+  white-space: normal;
+  padding: 0 10px;
+}
+@media (max-width: 991px) {
+  #mixedSlider .MS-content .item {
+    width: 50%;
+  }
+}
+@media (max-width: 767px) {
+  #mixedSlider .MS-content .item {
+    width: 100%;
+  }
+}
+
+
+#mixedSlider .MS-content .item .imgTitle img {
+  height: auto;
+  width: 100%;
+}
+
+
+#mixedSlider .MS-content .item a:hover {
+  text-shadow: 0 0 1px grey;
+}
+#mixedSlider .MS-controls button {
+  position: absolute;
+  border: none;
+  background-color: transparent;
+  outline: 0;
+  font-size: 50px;
+  top: 95px;
+  color: rgba(0, 0, 0, 0.4);
+  transition: 0.15s linear;
+}
+#mixedSlider .MS-controls button:hover {
+  color: rgba(0, 0, 0, 0.8);
+}
+@media (max-width: 992px) {
+  #mixedSlider .MS-controls button {
+    font-size: 30px;
+  }
+}
+@media (max-width: 767px) {
+  #mixedSlider .MS-controls button {
+    font-size: 20px;
+  }
+}
+#mixedSlider .MS-controls .MS-left {
+  left: 0px;
+}
+@media (max-width: 767px) {
+  #mixedSlider .MS-controls .MS-left {
+    left: -10px;
+  }
+}
+#mixedSlider .MS-controls .MS-right {
+  right: 0px;
+}
+@media (max-width: 767px) {
+  #mixedSlider .MS-controls .MS-right {
+    right: -10px;
+  }
+}
+
+

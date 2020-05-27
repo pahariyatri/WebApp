@@ -1,0 +1,85 @@
+{% extends "base.html" %}
+{% block content %}
+{% load static %}
+
+ <!-- bradcam_area  -->
+    <div class="bradcam_area bradcam_bg_2">
+        <div class="container">
+            <div class="row">
+                <div class="col-xl-12">
+                    <div class="bradcam_text text-center">
+                        <h3>{{page_title}}</h3>
+                        <p>Pixel perfect design with awesome contents</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--/ bradcam_area  -->
+  <!-- where_togo_area_end  -->
+    <div class="popular_places_area">
+        <div class="container">
+
+            <div class="row">
+{% for e in even %}
+                <div class="col-lg-4 col-md-6">
+                    <div class="single_place">
+                        <div class="thumb">
+                            <img data-desc="{{e.detail}}" dat-text="{{e.name}}" class="open" src="{{e.img.url}}" >
+                            <a href="#" class="prise">₹ {{e.price}}</a>
+                        </div>
+                        <div class="place_info">
+                            <a href="destination_details.html"><h3>{{e.name}}</h3></a>
+                            <p>{{e.region}}</p>
+                            <div class="rating_days d-flex justify-content-between">
+                                <span class="d-flex justify-content-center align-items-center">
+                                     <i class="fa fa-star"></i>
+                                     <i class="fa fa-star"></i>
+                                     <i class="fa fa-star"></i>
+                                     <i class="fa fa-star"></i>
+                                     <i class="fa fa-star"></i>
+                                     <a href="#">(20 Review)</a>
+                                </span>
+                                <div class="days">
+                                    <i class="fa fa-clock-o"></i>
+                                    <a href="#">{{e.duration}} days</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+		{% endfor %}
+
+      	</div>
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="more_place_btn text-center">
+                        <a class="boxed-btn4" href="/destination">More Places</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+            <!--Creates the popup body-->
+				 <div id="overlay" style="display:none;"></div>
+			    	<div class="popup-overlay">
+				  <!--Creates the popup content-->
+				         <div class="popup-content">
+                             <div class="body">
+							    <div class="imagefild">
+								    <img class="image_get" src=""/>
+						    	</div>
+							    <div class="text">
+								    <div class="header__pop">
+								    	<h2 class="header_title"> </h2>
+									    <p class="details_text"></p>
+									    <button >Book Now</button>
+							    	</div>
+							    </div>
+                             </div>
+					<!--popup's close button-->
+					<button class="close">X</button> </div>
+				</div>
+{% endblock content %}

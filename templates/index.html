@@ -6,7 +6,7 @@
 
 
     <!-- slider_area_start -->
-    <div class="slider_area">
+<div class="slider_area" xmlns="http://www.w3.org/1999/html">
         <div class="slider_active owl-carousel">
 
             <div class="single_slider  d-flex align-items-center slider_bg_1 overlay">
@@ -161,90 +161,125 @@
         </div>
     </div>
 
-    <!-- popular_destination_area_start  -->
-    <div class="popular_destination_area">
+</div>
+    <div class="popular_places_area">
         <div class="container">
             <div class="row justify-content-center">
                 <div class="col-lg-6">
                     <div class="section_title text-center mb_70">
-                        <h3>Popular Destination</h3>
+                        <h3>Upcoming Destination</h3>
                         <p>Suffered alteration in some form, by injected humour or good day randomised booth anim 8-bit hella wolf moon beard words.</p>
                     </div>
                 </div>
             </div>
-            <div class="row">
-                <div class="col-lg-4 col-md-6">
-                    <div class="single_destination">
-                        <div class="thumb">
-                            <img src="{% static 'img/category/water+activities.jpeg' %}" alt="">
-                        </div>
-                        <div class="content">
-                            <p class="d-flex align-items-center">Italy <a href="travel_destination.html">  07 Places</a> </p>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-4 col-md-6">
-                    <div class="single_destination">
-                        <div class="thumb">
-                            <img src="img/destination/2.png" alt="">
-                        </div>
-                        <div class="content">
-                            <p class="d-flex align-items-center">Brazil <a href="travel_destination.html">  03 Places</a> </p>
 
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-4 col-md-6">
-                    <div class="single_destination">
-                        <div class="thumb">
-                            <img src="img/destination/3.png" alt="">
-                        </div>
-                        <div class="content">
-                            <p class="d-flex align-items-center">America <a href="travel_destination.html">  10 Places</a> </p>
 
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-4 col-md-6">
-                    <div class="single_destination">
-                        <div class="thumb">
-                            <img src="img/destination/4.png" alt="">
-                        </div>
-                        <div class="content">
-                            <p class="d-flex align-items-center">Nepal <a href="travel_destination.html">  02 Places</a> </p>
 
+                <div id="mixedSlider">
+                    <div class="MS-content">
+                        <div class="item">
+                            <a href="/adventure">
+                            <div class="imgTitle">
+                                <img src="{% static 'img/category/adventure.jpg' %}" alt="" />
+                                <h4>ADVENTURE</h4>
+                            <p>{{ adventure }}+ destinations</p>
+                                  </div>
+                             </a>
                         </div>
-                    </div>
-                </div>
-                <div class="col-lg-4 col-md-6">
-                    <div class="single_destination">
-                        <div class="thumb">
-                            <img src="img/destination/5.png" alt="">
+                        <div class="item">
+                            <a href="/nature">
+                            <div class="imgTitle">
+                                <img src="{% static 'img/category/nature.jpg' %}" alt="" />
+                                 <h4>NATURE</h4>
+                            <p>{{ nature }}+ destinations</p>
+                                  </div>
+                             </a>
                         </div>
-                        <div class="content">
-                            <p class="d-flex align-items-center">Maldives <a href="travel_destination.html">  02 Places</a> </p>
+                         <div class="item">
+                             <a href="/solo">
+                            <div class="imgTitle">
+                                <img src="{% static 'img/category/solo.jpg' %}" alt="" />
 
+                                <h4 >Solo</h4>
+                                  <p>{{ solo }}+ destinations</p>
+                            </div>
+                             </a>
                         </div>
-                    </div>
-                </div>
-                <div class="col-lg-4 col-md-6">
-                    <div class="single_destination">
-                        <div class="thumb">
-                            <img src="img/destination/6.png" alt="">
+                         <div class="item" >
+                             <a href="/group">
+                                  <div class="imgTitle">
+                                      <img src="{% static 'img/category/group.jpeg' %}" alt="" />
+                                      <h4>GROUP</h4>
+                                      <p>{{ group }}+ destinations</p>
+                                  </div>
+                             </a>
                         </div>
-                        <div class="content">
-                            <p class="d-flex align-items-center">Indonesia <a href="travel_destination.html">  05 Places</a> </p>
+                         <div class="item">
+                             <a href="/religous">
+                            <div class="imgTitle">
+                                <img src="{% static 'img/category/religious.png' %}" alt="" />
+                                 <h4>RELIGOUS</h4>
+                              <p>{{ religous }}+ destinations</p>
+                                  </div>
+                             </a>
+                        </div>
 
+                        <div class="item">
+                            <a href="/family">
+                            <div class="imgTitle">
+                                <img src="{% static 'img/category/family.jpg' %}" alt="" />
+                                 <h4>FAMILY</h4>
+                                <p>{{ family }}+ destinations</p>
+                                  </div>
+                             </a>
                         </div>
+                        <div class="item">
+                            <a href="/romantic">
+                            <div class="imgTitle">
+                                <img src="{% static 'img/category/couple.jpg' %}" alt="" />
+                                 <h4>ROMANTIC</h4>
+                             <p>{{ romantic }}+ destinations</p>
+                                  </div>
+                             </a>
+                        </div>
+                         <div class="item">
+                             <a href="/wateractivities">
+                            <div class="imgTitle">
+                                <img src="{% static 'img/category/water.jpeg' %}" alt="" />
+                                <h4>WATER ACTIVITIES</h4>
+                                    <p>{{ water_act }}+ destinations</p>
+                                  </div>
+                             </a>
+                        </div>
+
+
+                    </div>
+                    <div class="MS-controls">
+                        <button class="MS-left"><i class="fa fa-angle-left" aria-hidden="true"></i></button>
+                        <button class="MS-right"><i class="fa fa-angle-right" aria-hidden="true"></i></button>
                     </div>
                 </div>
-            </div>
-        </div>
+              </div>
     </div>
-    <!-- popular_destination_area_end  -->
 
 
 
+
+
+
+
+<script src="{% static 'js/slide.js' %}"></script>
+<script src="{% static 'js/multislider.js' %}"></script>
+<script>
+$('#basicSlider').multislider({
+			continuous: true,
+			duration: 2000
+		});
+		$('#mixedSlider').multislider({
+			duration: 750,
+			interval: 3000
+		});
+</script>
 
 
     <!-- testimonial_area  -->

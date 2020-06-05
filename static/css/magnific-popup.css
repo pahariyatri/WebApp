@@ -305,7 +305,9 @@ img.mfp-img {
     padding-left: 0;
     padding-right: 0; }
   .mfp-img-mobile img.mfp-img {
-    padding: 0; }
+    padding: 0;
+     width: auto;
+     height:auto;}
   .mfp-img-mobile .mfp-figure:after {
     top: 0;
     bottom: 0; }

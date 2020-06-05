@@ -1294,7 +1294,7 @@ h3 {
 
 /* line 1, ../../Arafath/CL/December/231. Travel-02/HTML/scss/_slider.scss */
 .slider_bg_1 {
-  background-image: url(../img/banner/banner.png);
+  background-image: url({{ e.img.url }});
 }
 
 /* line 4, ../../Arafath/CL/December/231. Travel-02/HTML/scss/_slider.scss */
@@ -1401,16 +1401,15 @@ h3 {
 
 /* line 79, ../../Arafath/CL/December/231. Travel-02/HTML/scss/_slider.scss */
 .slider_area .owl-carousel .owl-nav div {
-  height: 120px;
+  height: 0px;
   left: 0px;
-  width: 50px;
   color: #fff;
   background-color: transparent;
   -webkit-border-radius: 0;
   -moz-border-radius: 0;
   border-radius: 0;
   left: 50px;
-  font-size: 14px;
+  font-size: 20px;
   border: none;
   left: 150px;
   line-height: 120px;
@@ -3103,7 +3102,9 @@ h3 {
 
 /* line 18, ../../Arafath/CL/December/231. Travel-02/HTML/scss/_popular_place.scss */
 .popular_places_area .single_place .thumb img {
-  width: 100%;
+  width: 362px;
+  height: 270px;
+  object-fit: cover;
 }
 
 /* line 21, ../../Arafath/CL/December/231. Travel-02/HTML/scss/_popular_place.scss */
@@ -6773,4 +6774,106 @@ h6 {
   }
 }
 
+#exampleSlider {
+
+  position: relative;
+  height:200px;
+  width:175px
+  border: 1px solid black;
+}
+@media (max-width: 767px) {
+  #exampleSlider {
+    border-color: transparent;
+  }
+}
+#exampleSlider .MS-content {
+  margin: 15px 5%;
+  overflow: hidden;
+  white-space: nowrap;
+  border: 1px solid red;
+}
+@media (max-width: 767px) {
+  #exampleSlider .MS-content {
+    margin: 0;
+  }
+}
+#exampleSlider .MS-content .item {
+  display: inline-block;
+  height: 100%;
+  overflow: hidden;
+  position: relative;
+  vertical-align: top;
+  border: 1px solid green;
+  border-right: none;
+  width: auto;
+}
+#exampleSlider .MS-content .item .img {
+    height:200px;
+    width:200px;
+
+}
+@media (max-width: 1200px) {
+  #exampleSlider .MS-content .item {
+    width: 25%;
+  }
+}
+@media (max-width: 992px) {
+  #exampleSlider .MS-content .item {
+    width: 33.3333%;
+  }
+}
+@media (max-width: 767px) {
+  #exampleSlider .MS-content .item {
+    width: 50%;
+  }
+}
+#exampleSlider .MS-content .item p {
+  font-size: 30px;
+  height:100px;
+  width:100px;
+  text-align: center;
+  line-height: 1;
+  vertical-align: middle;
+  margin: 0;
+  padding: 10px 0;
+}
+#exampleSlider .MS-controls button {
+  position: absolute;
+  border: none;
+  background: transparent;
+  font-size: 20px;
+  outline: 0;
+  top: 35px;
+}
+@media (max-width: 767px) {
+  #exampleSlider .MS-controls button {
+    display: none;
+  }
+}
+#exampleSlider .MS-controls button:hover {
+  cursor: pointer;
+}
+#exampleSlider .MS-controls .MS-left {
+  left: 10px;
+  height: 50%;
+  color: white;
+
+}
+@media (max-width: 992px) {
+  #exampleSlider .MS-controls .MS-left {
+    left: -2px;
+  }
+}
+#exampleSlider .MS-controls .MS-right {
+  right: 10px;
+  height: 50%;
+  color: white;
+}
+@media (max-width: 992px) {
+  #exampleSlider .MS-controls .MS-right {
+    right: -2px;
+
+
+  }
+}
 

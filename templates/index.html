@@ -3,57 +3,30 @@
 {% load static %}
 
 
-
-
-    <!-- slider_area_start -->
-<div class="slider_area" xmlns="http://www.w3.org/1999/html">
+  <!-- slider_area_start -->
+    <div class="slider_area">
         <div class="slider_active owl-carousel">
+            {% for ev in ev %}
+            <div class="single_slider  d-flex align-items-center overlay" style="background-image: url({{ev.img.url}})">
 
-            <div class="single_slider  d-flex align-items-center slider_bg_1 overlay">
+                <div class="container">
+                    <div class="row align-items-center">
+                        <div class="col-xl-12 col-md-12">
+                            <div class="slider_text text-center">
+                                <h3>{{ev.location}}</h3>
+                                <p>{{ ev.small_description }}</p>
+                                <a href="destination/details/{{ e.id }}" class="boxed-btn3">Explore Now</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
 
-                <div class="container">
-                    <div class="row align-items-center">
-                        <div class="col-xl-12 col-md-12">
-                            <div class="slider_text text-center">
-                                <h3>Indonesia</h3>
-                                <p>Pixel perfect design with awesome contents</p>
-                                <a href="#" class="boxed-btn3">Explore Now</a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="single_slider  d-flex align-items-center slider_bg_2 overlay">
-                <div class="container">
-                    <div class="row align-items-center">
-                        <div class="col-xl-12 col-md-12">
-                            <div class="slider_text text-center">
-                                <h3>Australia</h3>
-                                <p>Pixel perfect design with awesome contents</p>
-                                <a href="#" class="boxed-btn3">Explore Now</a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="single_slider  d-flex align-items-center slider_bg_3 overlay" >
-                <div class="container">
-                    <div class="row align-items-center">
-                        <div class="col-xl-12 col-md-12">
-                            <div class="slider_text text-center">
-                                <h3>Switzerland</h3>
-                                <p>Pixel perfect design with awesome contents</p>
-                                <a href="#" class="boxed-btn3">Explore Now</a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
         </div>
 
     </div>
     <!-- slider_area_end -->
-
   <!-- where_togo_area_start  -->
     <div class="where_togo_area">
         <div class="container">
@@ -108,12 +81,12 @@
                 <div class="col-lg-4 col-md-6">
                     <div class="single_place">
                         <div class="thumb">
-                            <img data-desc="{{e.detail}}" dat-text="{{e.name}}" class="open" src="{{e.img.url}}" >
-                            <a href="#" class="prise">₹ {{e.price}}</a>
+                            <img data-desc="{{e.small_description}}" dat-text="{{e.name}}" class="open" src="{{e.img.url}}" >
+                            <a href="destination/details/{{ e.id }}" class="prise">₹ {{e.price}}</a>
                         </div>
                         <div class="place_info">
-                            <a href="destination_details.html"><h3>{{e.name}}</h3></a>
-                            <p>{{e.region}}</p>
+                            <a href="destination/details/{{ e.id }}"><h3>{{e.name}}</h3></a>
+                            <p>{{e.location}}/{{e.region}}</p>
                             <div class="rating_days d-flex justify-content-between">
                                 <span class="d-flex justify-content-center align-items-center">
                                      <i class="fa fa-star"></i>
@@ -125,7 +98,7 @@
                                 </span>
                                 <div class="days">
                                     <i class="fa fa-clock-o"></i>
-                                    <a href="#">{{e.duration}} days</a>
+                                    <a href="destination/details/{{ e.id }}">{{e.duration}} days</a>
                                 </div>
                             </div>
                         </div>
@@ -143,37 +116,101 @@
             </div>
         </div>
     </div>
-
-<div class="video_area video_bg overlay">
+<div class="where_togo_area">
         <div class="container">
-            <div class="row">
-                <div class="col-lg-12">
-                    <div class="video_wrap text-center">
-                        <h3>Enjoy Video</h3>
-                        <div class="video_icon">
-                            <a class="popup-video video_play_button" href="https://www.youtube.com/watch?v=f59dDEk57i0">
-                                <i class="fa fa-play"></i>
-                            </a>
+
+                <div id="exampleSlider">
+       <div class="MS-content">
+           {% for e in even %}
+           <div class="item">
+
+ <a href="/destination/details/{{ e.id }}">
+                                <img src="{{e.img.url}}" style="width: 210px; /* width of container */
+    height: 230px; /* height of container */
+    object-fit: cover;
+    border: 5px ;" alt="" />
+                                 <h4>NATURE</h4>
+                            <p>{{ e.name }} destinations</p>
+ </a>
                         </div>
-                    </div>
-                </div>
+           {% endfor %}
+           <div class="item">
+               <p>Item<br>2</p>
+           </div>
+           <div class="item">
+               <p>Item<br>3</p>
+           </div>
+           <div class="item">
+               <p>Item<br>4</p>
+           </div>
+           <div class="item">
+               <p>Item<br>5</p>
+           </div>
+           <div class="item">
+               <p>Item<br>6</p>
+           </div>
+           <div class="item">
+               <p>Item<br>7</p>
+           </div>
+           <div class="item">
+               <p>Item<br>8</p>
+           </div>
+           <div class="item">
+               <p>Item<br>9</p>
+           </div>
+           <div class="item">
+               <p>Item<br>10</p>
+
+           </div>
+                      <div class="item">
+               <p>Item<br>8</p>
+           </div>
+           <div class="item">
+               <p>Item<br>9</p>
+           </div>
+           <div class="item">
+               <p>Item<br>10</p>
+           </div>
+       </div>
+       <div class="MS-controls">
+           <button class="MS-left"><i class="fa fa-chevron-left" aria-hidden="true"></i></button>
+           <button class="MS-right"><i class="fa fa-chevron-right" aria-hidden="true"></i></button>
+       </div>
+   </div>
+
             </div>
         </div>
     </div>
 
-</div>
-    <div class="popular_places_area">
+
+    <!-- Include jQuery -->
+    <script src="{% static 'js/jquery-2.2.4.min.js' %}"></script>
+
+    <!-- Include Multislider -->
+    <script src="{% static 'js/multislider.min.js' %}"></script>
+
+    <!-- Initialize element with Multislider -->
+    <script>
+    $('#exampleSlider').multislider({
+        interval: 4000,
+        slideAll: true,
+        duration: 1500
+    });
+    </script>
+
+<div class="bordered_1px"></div>
+
         <div class="container">
+
             <div class="row justify-content-center">
+                <h3>Explore by Category</h3>
                 <div class="col-lg-6">
                     <div class="section_title text-center mb_70">
-                        <h3>Upcoming Destination</h3>
+
                         <p>Suffered alteration in some form, by injected humour or good day randomised booth anim 8-bit hella wolf moon beard words.</p>
                     </div>
                 </div>
             </div>
-
-
 
                 <div id="mixedSlider">
                     <div class="MS-content">
@@ -182,7 +219,7 @@
                             <div class="imgTitle">
                                 <img src="{% static 'img/category/adventure.jpg' %}" alt="" />
                                 <h4>ADVENTURE</h4>
-                            <p>{{ adventure }}+ destinations</p>
+                            <p>{{ adventure }} destinations</p>
                                   </div>
                              </a>
                         </div>
@@ -191,7 +228,7 @@
                             <div class="imgTitle">
                                 <img src="{% static 'img/category/nature.jpg' %}" alt="" />
                                  <h4>NATURE</h4>
-                            <p>{{ nature }}+ destinations</p>
+                            <p>{{ nature }} destinations</p>
                                   </div>
                              </a>
                         </div>
@@ -201,7 +238,7 @@
                                 <img src="{% static 'img/category/solo.jpg' %}" alt="" />
 
                                 <h4 >Solo</h4>
-                                  <p>{{ solo }}+ destinations</p>
+                                  <p>{{ solo }} destinations</p>
                             </div>
                              </a>
                         </div>
@@ -210,7 +247,7 @@
                                   <div class="imgTitle">
                                       <img src="{% static 'img/category/group.jpeg' %}" alt="" />
                                       <h4>GROUP</h4>
-                                      <p>{{ group }}+ destinations</p>
+                                      <p>{{ group }} destinations</p>
                                   </div>
                              </a>
                         </div>
@@ -219,7 +256,7 @@
                             <div class="imgTitle">
                                 <img src="{% static 'img/category/religious.png' %}" alt="" />
                                  <h4>RELIGOUS</h4>
-                              <p>{{ religous }}+ destinations</p>
+                              <p>{{ religous }} destinations</p>
                                   </div>
                              </a>
                         </div>
@@ -229,7 +266,7 @@
                             <div class="imgTitle">
                                 <img src="{% static 'img/category/family.jpg' %}" alt="" />
                                  <h4>FAMILY</h4>
-                                <p>{{ family }}+ destinations</p>
+                                <p>{{ family }} destinations</p>
                                   </div>
                              </a>
                         </div>
@@ -238,7 +275,7 @@
                             <div class="imgTitle">
                                 <img src="{% static 'img/category/couple.jpg' %}" alt="" />
                                  <h4>ROMANTIC</h4>
-                             <p>{{ romantic }}+ destinations</p>
+                             <p>{{ romantic }} destinations</p>
                                   </div>
                              </a>
                         </div>
@@ -247,7 +284,7 @@
                             <div class="imgTitle">
                                 <img src="{% static 'img/category/water.jpeg' %}" alt="" />
                                 <h4>WATER ACTIVITIES</h4>
-                                    <p>{{ water_act }}+ destinations</p>
+                                    <p>{{ water_act }} destinations</p>
                                   </div>
                              </a>
                         </div>
@@ -260,21 +297,14 @@
                     </div>
                 </div>
               </div>
-    </div>
-
-
-
-
-
+ </div>
+              </div>
 
 
 <script src="{% static 'js/slide.js' %}"></script>
 <script src="{% static 'js/multislider.js' %}"></script>
 <script>
-$('#basicSlider').multislider({
-			continuous: true,
-			duration: 2000
-		});
+
 		$('#mixedSlider').multislider({
 			duration: 750,
 			interval: 3000
@@ -313,76 +343,24 @@ $('#basicSlider').multislider({
     </div>
     <!-- /testimonial_area  -->
 
-<!-- newletter_area_start  -->
-        <div class="newletter_area overlay">
-            <div class="container">
-                <div class="row justify-content-center align-items-center">
-                    <div class="col-lg-10">
-                        <div class="row align-items-center">
-                            <div class="col-lg-5">
-                                <div class="newsletter_text">
-                                    <h4>Subscribe Our Newsletter</h4>
-                                    <p>Subscribe newsletter to get offers and about
-                                        new places to discover.</p>
-                                </div>
-                            </div>
-                            <div class="col-lg-7">
-                                <div class="mail_form">
-                                    <div class="row no-gutters">
-                                        <div class="col-lg-9 col-md-8">
-                                            <div class="newsletter_field">
-                                                <input type="email" placeholder="Your mail" >
-                                            </div>
-                                        </div>
-                                        <div class="col-lg-3 col-md-4">
-                                            <div class="newsletter_btn">
-                                                <button class="boxed-btn4 " type="submit" >Subscribe</button>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <!-- newletter_area_end  -->
-
- <div class="travel_variation_area">
+<div class="video_area video_bg overlay">
         <div class="container">
             <div class="row">
-                <div class="col-lg-4 col-md-6">
-                    <div class="single_travel text-center">
-                        <div class="icon">
-                            <img src="{% static 'img/svg_icon/1.svg' %}" alt="">
+                <div class="col-lg-12">
+                    <div class="video_wrap text-center">
+                        <h3>Enjoy Video</h3>
+                        <div class="video_icon">
+                            <a class="popup-video video_play_button" href="https://www.youtube.com/watch?v=f59dDEk57i0">
+                                <i class="fa fa-play"></i>
+                            </a>
                         </div>
-                        <h3>Comfortable Journey</h3>
-                        <p>A wonderful serenity has taken to the possession of my entire soul.</p>
-                    </div>
-                </div>
-                <div class="col-lg-4 col-md-6">
-                    <div class="single_travel text-center">
-                        <div class="icon">
-                            <img src="{% static 'img/svg_icon/2.svg' %}" alt="">
-                        </div>
-                        <h3>Luxuries Hotel</h3>
-                        <p>A wonderful serenity has taken to the possession of my entire soul.</p>
-                    </div>
-                </div>
-                <div class="col-lg-4 col-md-6">
-                    <div class="single_travel text-center">
-                        <div class="icon">
-                            <img src="{% static 'img/svg_icon/3.svg' %}" alt="">
-                        </div>
-                        <h3>Travel Guide</h3>
-                        <p>A wonderful serenity has taken to the possession of my entire soul.</p>
                     </div>
                 </div>
             </div>
         </div>
     </div>
 
+</div>
 
 
 <!--Creates the popup body-->

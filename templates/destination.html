@@ -10,7 +10,7 @@
                 <div class="col-xl-12">
                     <div class="bradcam_text text-center">
                         <h3>{{page_title}}</h3>
-                        <p>Pixel perfect design with awesome contents</p>
+                        <p>{{ even.small_description }}</p>
                     </div>
                 </div>
             </div>
@@ -133,7 +133,7 @@
 
                             <div class="single_place">
                                 <div class="thumb">
-                                    <img data-desc="{{Destinations.detail}}" dat-text="{{Destinations.name}}" class="open" src="{{Destinations.img.url}}" >
+                                    <img data-desc="{{Destinations.small_description}}" dat-text="{{Destinations.name}}" class="open" src="{{Destinations.img.url}}" >
                                     <a href="#" class="prise">₹ {{Destinations.price}}</a>
                                 </div>
                                 <div class="place_info">
@@ -165,11 +165,11 @@
 
                             <div class="single_place">
                                 <div class="thumb">
-                                    <img data-desc="{{e.detail}}" dat-text="{{e.name}}" class="open" src="{{e.img.url}}" >
-                                    <a href="#" class="prise">₹ {{e.price}}</a>
+                                    <img data-desc="{{e.small_description}}" dat-text="{{e.name}}" class="open" src="{{e.img.url}}" >
+                                    <a href="destination/details/{{ e.id }}" class="prise">₹ {{e.price}}</a>
                                 </div>
                                 <div class="place_info">
-                                    <a href="destination_details.html"><h3>{{e.name}}</h3></a>
+                                    <a href="destination/details/{{ e.id }}"><h3>{{e.name}}</h3></a>
                                     <p>{{e.region}}</p>
                                     <div class="rating_days d-flex justify-content-between">
                                         <span class="d-flex justify-content-center align-items-center">
@@ -182,7 +182,7 @@
                                         </span>
                                         <div class="days">
                                             <i class="fa fa-clock-o"></i>
-                                            <a href="#">{{e.duration}} days</a>
+                                            <a href="destination/details/{{ e.id }}">{{e.duration}} days</a>
                                         </div>
                                     </div>
                                 </div>
@@ -202,67 +202,7 @@
         </div>
     </div>
 
-    <div class="recent_trip_area">
-        <div class="container">
-            <div class="row justify-content-center">
-                <div class="col-lg-6">
-                    <div class="section_title text-center mb_70">
-                        <h3>Recent Trips</h3>
-                    </div>
-                </div>
-            </div>
-            <div class="row">
-                <div class="col-lg-4 col-md-6">
-                    <div class="single_trip">
-                        <div class="thumb">
-                            <img src="{% static 'img/trip/1.png' %}" alt="">
-                        </div>
-                        <div class="info">
-                            <div class="date">
-                                <span>Oct 12, 2019</span>
-                            </div>
-                            <a href="#">
-                                <h3>Journeys Are Best Measured In
-                                    New Friends</h3>
-                            </a>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-4 col-md-6">
-                    <div class="single_trip">
-                        <div class="thumb">
-                            <img src="{% static 'img/trip/2.png' %}" alt="">
-                        </div>
-                        <div class="info">
-                            <div class="date">
-                                <span>Oct 12, 2019</span>
-                            </div>
-                            <a href="#">
-                                <h3>Journeys Are Best Measured In
-                                    New Friends</h3>
-                            </a>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-4 col-md-6">
-                    <div class="single_trip">
-                        <div class="thumb">
-                            <img src="{% static 'img/trip/3.png' %}" alt="">
-                        </div>
-                        <div class="info">
-                            <div class="date">
-                                <span>Oct 12, 2019</span>
-                            </div>
-                            <a href="#">
-                                <h3>Journeys Are Best Measured In
-                                    New Friends</h3>
-                            </a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
+
  <!--Creates the popup body-->
 				 <div id="overlay" style="display:none;"></div>
 			    	<div class="popup-overlay">

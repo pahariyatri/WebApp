@@ -1,0 +1,260 @@
+{% extends "base.html" %}
+{% block content %}
+{% load static %}
+    <div class="bradcam_area" style="background-image: url({{ev.img.url}})">
+        <div class="container">
+            <div class="row">
+                <div class="col-xl-12">
+                    <div class="bradcam_text text-center">
+                        <h3>{{ ev.name }}</h3>
+                        <p>{{ ev.small_description }}</p>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <div class="destination_details_info">
+        <div class="container">
+<style>
+#more {display: none;}
+</style>
+
+			<div class="section-top-border">
+				</div>
+				<div class="row">
+
+					<div class="col-lg-8 col-md-8">
+						 <div class="destination_info">
+						<h4 class="mb-30">About {{ ev.name }}</h4>
+						 <p>{{ ev.full_description }} <span id="dots">...</span><span id="more">{{ ev.continue_description }}
+							  </span></p>
+								<p onclick="myFunction()" id="myBtn">Read more</p>
+
+						 </div>
+						<h4 class="mb-30">The Mythology Of {{ ev.location }}</h4>
+						  <div class="destination_info">
+							  <p>{{ ev.small_description }} <span id="dots">...</span><span id="more">{{ ev.mythological }}
+							  </span></p>
+								<p onclick="myFunction()" id="myBtn">Read more</p>
+
+							  <script>
+function myFunction() {
+  var dots = document.getElementById("dots");
+  var moreText = document.getElementById("more");
+  var btnText = document.getElementById("myBtn");
+
+  if (dots.style.display === "none") {
+    dots.style.display = "inline";
+    btnText.innerHTML = "Read more";
+    moreText.style.display = "none";
+  } else {
+    dots.style.display = "none";
+    btnText.innerHTML = "Read less";
+    moreText.style.display = "inline";
+  }
+}
+</script>
+
+
+
+							  <div class="section-top-border">
+
+{% for a in a %}
+<div class="single_destination">
+                            <h4 class="collapsible">{{a.day_heading}}</i></h4>
+                            <p class="content">{{a.day}}</p>
+                        </div>
+{% endfor %}
+
+							  </div>
+
+
+							  <div class="section-top-border">
+							   <div class="row gallery-item">
+								   {% for p in photos %}
+					<div class="col-md-4">
+						<a href="{{p.img.url}}" class="img-pop-up">
+							<div class="single-gallery-image" style="background: url({{p.img.url}});"></div>
+						</a>
+					</div>
+								   {% endfor %}
+
+
+								   </div>
+
+				</div>
+<style>
+.collapsible {
+
+
+  cursor: pointer;
+  padding: 18px;
+  width: 100%;
+  Display: block;
+  text-align: left;
+  outline: none;
+  font-size: 18px;
+
+       color: #4cd3e3;
+    border: 1px solid #4cd3e3;
+    background: #fff;
+}
+}
+
+.active, .collapsible:hover {
+  background-color: #555;
+}
+
+.content {
+  padding: 0 18px;
+  display: none;
+  overflow: hidden;
+  background-color: #fff;
+}
+
+</style>
+                    </div>
+					</div>
+
+					<div class="col-lg-3 col-md-4 mt-sm-30">
+						<h4 class="mb-30">Overview</h4>
+
+						<p>Destination ID : {{ev.id}}</p>
+						<p>Trip Location:{{ ev.location }} </p>
+						<p>Destination Price: {{ev.price}}</p>
+						<p>Durations : {{ev.duration}} Days</p>
+						<p>Date : {{ev.date}}</p>
+						<p>Destination Point : {{ev.destination_covered}}</p>
+						<div class="single-element-widget mt-30">
+						<h3 class="mb-20">What's Included</h3>
+						<div class="">
+
+							<h5 class="collapsible">Accommodation <i class="fa fa-caret-down"></i></i></h5>
+							<div class="content">
+ 								 <ul class="unordered-list">
+									 {% for b in b %}
+										<li>{{ b.accommodation}}</li>
+									 {% endfor %}
+
+
+							</ul>
+							</div>
+<div class="single_destination">
+							<h5  class="collapsible">Meals <i class="fa fa-caret-down"></i></h5>
+
+							<div class="content">
+  <ul class="unordered-list">
+								 {% for b in b %}
+										<li>{{ b.meals}}</li>
+									 {% endfor %}
+
+							</ul>
+</div>
+</div>
+
+							<h5 class="collapsible">Guide <i class="fa fa-caret-down"></i></h5>
+
+							<div class="content">
+  <ul class="unordered-list">
+								 {% for b in b %}
+										<li>{{ b.guide}}</li>
+									 {% endfor %}
+
+							</ul>
+</div>
+							<h5 class="collapsible">Transport <i class="fa fa-caret-down"></i></h5>
+							<div class="content">
+  <ul class="unordered-list">
+								 {% for b in b %}
+										<li>{{ b.transport }}</li>
+									 {% endfor %}
+
+							</ul>
+</div>
+							<h5 class="collapsible">Additional Services <i class="fa fa-caret-down"></i></i></h5>
+							<div class="content">
+ 							 <ul class="unordered-list">
+								 {% for b in b %}
+										<li>{{ b.additional}}</li>
+									 {% endfor %}
+							</ul>
+</div>
+
+							<script>
+var coll = document.getElementsByClassName("collapsible");
+
+var i;
+
+for (i = 0; i < coll.length; i++) {
+  coll[i].addEventListener("click", function() {
+    this.classList.toggle("active");
+    var content = this.nextElementSibling;
+    if (content.style.display === "block") {
+      content.style.display = "none";
+    } else {
+      content.style.display = "block";
+    }
+  });
+}
+</script>
+</div>
+						</div>
+						<div class="single-element-widget mt-30">
+						<h3 class="mb-20">WHAT'S EXCLUDED</h3>
+						<div class="">
+							<ul class="unordered-list">
+								{% for c in c %}
+								<li>{{c.list}}</li>
+								{% endfor %}
+
+							</ul>
+						</div>
+							</div>
+
+						<div class="single-element-widget mt-30">
+							<h3 class="mb-30">Radios</h3>
+							<div class="switch-wrap d-flex justify-content-between">
+								<p>01. Sample radio</p>
+								<div class="primary-radio">
+									<input type="checkbox" id="default-radio">
+									<label for="default-radio"></label>
+								</div>
+							</div>
+							<div class="switch-wrap d-flex justify-content-between">
+								<p>02. Primary Color radio</p>
+								<div class="primary-radio">
+									<input type="checkbox" id="primary-radio" checked>
+									<label for="primary-radio"></label>
+								</div>
+							</div>
+							<div class="switch-wrap d-flex justify-content-between">
+								<p>03. Confirm Color radio</p>
+								<div class="confirm-radio">
+									<input type="checkbox" id="confirm-radio" checked>
+									<label for="confirm-radio"></label>
+								</div>
+							</div>
+							<div class="switch-wrap d-flex justify-content-between">
+								<p>04. Disabled radio</p>
+								<div class="disabled-radio">
+									<input type="checkbox" id="disabled-radio" disabled>
+									<label for="disabled-radio"></label>
+								</div>
+							</div>
+							<div class="switch-wrap d-flex justify-content-between">
+								<p>05. Disabled radio active</p>
+								<div class="disabled-radio">
+									<input type="checkbox" id="disabled-radio-active" checked disabled>
+									<label for="disabled-radio-active"></label>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+        </div>
+    </div>
+{% endblock content %}

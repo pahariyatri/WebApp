@@ -2,9 +2,6 @@ from django.contrib import admin
 from .models import *
 
 # Register your models here.
-
-
-
 admin.site.register(Thought)
 
 class DestinationImageAdmin(admin.StackedInline):
@@ -22,7 +19,7 @@ class DestinationExcludeAdmin(admin.StackedInline):
 @admin.register(Destination)
 class DestinationsAdmin(admin.ModelAdmin):
     inlines = (DestinationImageAdmin, DestinationDayAdmin, DestinationIncludeAdmin, DestinationExcludeAdmin)
-    list_display = ("name", "categories", "duration", "price", "img", "region")
+    list_display = ("name", "categories", "duration", "price", "date", "location", "region")
 
     class Meta:
         model = Destination

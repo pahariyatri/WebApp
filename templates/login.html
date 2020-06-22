@@ -1,0 +1,33 @@
+{% extends "base.html" %}
+{% block content %}
+{% load static %}
+
+ <div class="container">
+    <div class="jumbotron">
+		 <form method="post" action="/accounts/user_login">
+              {% csrf_token %}
+             <div class="author_thumb">
+                 <img src="{%static 'img/pahariyatri.png' %}" style="" alt="">
+             </div>
+              <div class="mt-10">
+                  <input type="text" name="username" placeholder="Username" onfocus="this.placeholder = ''"
+                         onblur="this.placeholder = 'username'" required class="single-input">
+              </div>
+              <div class="mt-10">
+                   <input type="password" name="password" placeholder="Password"
+                   	onfocus="this.placeholder = ''" onblur="this.placeholder = 'password'" required
+									class="single-input">
+              </div>
+             <div class="mt-10">
+              <button class="genric-btn default-border" type="submit" value="Login">Login</button>
+               <a href="/accounts/register" class="genric-btn default-border" type="submit" >Sign Up</a>
+                 </div>
+         </form>
+
+        {% for messages in messages %}
+	        <p>{{messages}}</p>
+        {% endfor %}
+    </div>
+ </div>
+
+{% endblock content %}

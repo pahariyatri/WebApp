@@ -1,5 +1,6 @@
 from django.shortcuts import render, redirect, get_object_or_404
 from .models import Thought
+from math import ceil
 from .models import Destination, DestinationImage, DestinationDay, DestinationInclude, DestinationExclude
 from django.http import *
 from django.db.models import Q
@@ -8,13 +9,22 @@ from django.contrib import messages
 from django.contrib.auth.models import User, auth
 from datetime import datetime, timedelta
 startdate = datetime.today()
-enddate = startdate + timedelta(days=364)
+enddate = startdate + timedelta(days=154)
 
 def index(request):
 
     ev = Destination.objects.filter(date__range=[startdate, enddate])[:3]
-    eve = Destination.objects.all()[:6:-1]
+    eve = Destination.objects.all()[:12:-1]
     thought = Thought.objects.all()
+    allProds = []
+    catprods = Destination.objects.values('region', 'id')
+    cats = {item['region'] for item in catprods}
+    for cat in cats:
+        prod = Destination.objects.filter(region=cat)
+        n = len(prod)
+        nSlides = n // 4 + ceil((n / 4) - (n // 4))
+        allProds.append([prod, range(1, nSlides), nSlides])
+
     adventure = Destination.objects.filter(categories='ADVENTURE').count()
     solo = Destination.objects.filter(categories='SOLO').count()
     nature = Destination.objects.filter(categories='NATURE').count()
@@ -28,6 +38,7 @@ def index(request):
         "even": eve,
         "ev": ev,
         "thoug": thought,
+        "allProds":allProds,
         "adventure":adventure,
         "nature": nature,
         "solo":solo,
@@ -89,8 +100,8 @@ class SearchResultsView(ListView):
         object_list = Destination.objects.filter(
             Q(name__exact=query) | Q(categories__exact=query)
         )
-
         return object_list
+
 
 def adventure(request):
 #    eve = Destinations.objects.all()

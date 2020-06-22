@@ -1,13 +1,16 @@
 {% extends "base.html" %}
 {% block content %}
 {% load static %}
+  <script>document.getElementsByTagName("html")[0].className += " js";</script>
+  <link rel="stylesheet" href="{%static 'assets/css/style.css' %}">
     <div class="bradcam_area" style="background-image: url({{ev.img.url}})">
         <div class="container">
             <div class="row">
                 <div class="col-xl-12">
                     <div class="bradcam_text text-center">
                         <h3>{{ ev.name }}</h3>
-                        <p>{{ ev.small_description }}</p>
+                        <p>{{ ev.tagline }}</p>
+						<a href="#0" class="cd-add-to-cart js-cd-add-to-cart" data-price="{{ev.price}}">Add To Cart</a>
 
                     </div>
                 </div>
@@ -29,16 +32,14 @@
 					<div class="col-lg-8 col-md-8">
 						 <div class="destination_info">
 						<h4 class="mb-30">About {{ ev.name }}</h4>
-						 <p>{{ ev.full_description }} <span id="dots">...</span><span id="more">{{ ev.continue_description }}
+						 <p>{{ ev.description|slice:":250" }} <span id="dots">...</span><span id="more">{{ ev.description|slice:"-250:"}}
 							  </span></p>
 								<p onclick="myFunction()" id="myBtn">Read more</p>
 
 						 </div>
-						<h4 class="mb-30">The Mythology Of {{ ev.location }}</h4>
+						<h4 class="mb-30">The Mythology Of {{ ev.name }}</h4>
 						  <div class="destination_info">
-							  <p>{{ ev.small_description }} <span id="dots">...</span><span id="more">{{ ev.mythological }}
-							  </span></p>
-								<p onclick="myFunction()" id="myBtn">Read more</p>
+							  <p>{{ ev.mythologi}} </p>
 
 							  <script>
 function myFunction() {
@@ -120,6 +121,7 @@ function myFunction() {
 					</div>
 
 					<div class="col-lg-3 col-md-4 mt-sm-30">
+
 						<h4 class="mb-30">Overview</h4>
 
 						<p>Destination ID : {{ev.id}}</p>
@@ -256,5 +258,39 @@ for (i = 0; i < coll.length; i++) {
 				</div>
 			</div>
         </div>
-    </div>
+    <div class="cd-cart cd-cart--empty js-cd-cart">
+	<a href="#0" class="cd-cart__trigger text-replace">
+		Cart
+		<ul class="cd-cart__count"> <!-- cart items count -->
+			<li>0</li>
+			<li>0</li>
+		</ul> <!-- .cd-cart__count -->
+	</a>
+
+	<div class="cd-cart__content">
+		<div class="cd-cart__layout">
+			<header class="cd-cart__header">
+				<h2>Cart</h2>
+				<span class="cd-cart__undo">Item removed. <a href="#0">Undo</a></span>
+			</header>
+
+			<div class="cd-cart__body">
+				<ul>
+					<!-- products added to the cart will be inserted here using JavaScript -->
+				</ul>
+			</div>
+
+			<footer class="cd-cart__footer">
+				<a href="#0.." class="cd-cart__checkout">
+          <em>Checkout - $<span>0</span>
+            <svg class="icon icon--sm" viewBox="0 0 24 24"><g fill="none" stroke="currentColor"><line stroke-width="2" stroke-linecap="round" stroke-linejoin="round" x1="3" y1="12" x2="21" y2="12"/><polyline stroke-width="2" stroke-linecap="round" stroke-linejoin="round" points="15,6 21,12 15,18 "/></g>
+            </svg>
+          </em>
+        </a>
+			</footer>
+		</div>
+	</div> <!-- .cd-cart__content -->
+</div> <!-- cd-cart -->
+<script src="{% static 'assets/js/util.js' %}"></script> <!-- util functions included in the CodyHouse framework -->
+<script src="{% static 'assets/js/main.js' %}"></script>
 {% endblock content %}

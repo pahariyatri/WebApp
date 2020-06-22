@@ -1,21 +1,65 @@
+{% extends "base.html" %}
+{% block content %}
 {% load static %}
-<html lang="en">
-<body>
+
 
     <div class="container">
     <div class="jumbotron">
 
         <h1>Register Here</h1>
-        <h3>Just fill out the form.</h3>
-        <form enctype="multipart/form-data" method="POST">
+
+
+		 <form method="POST" action="register">
+              {% csrf_token %}
+							<div class="mt-10">
+								<input type="text" name="first_name" placeholder="First Name"
+									onfocus="this.placeholder = ''" onblur="this.placeholder = 'First Name'" required
+									class="single-input">
+							</div>
+							<div class="mt-10">
+								<input type="text" name="last_name" placeholder="Last Name"
+									onfocus="this.placeholder = ''" onblur="this.placeholder = 'Last Name'" required
+									class="single-input">
+							</div>
+							<div class="mt-10">
+								<input type="text" name="username" placeholder="username"
+									onfocus="this.placeholder = ''" onblur="this.placeholder = 'username'" required
+									class="single-input">
+							</div>
+							<div class="mt-10">
+								<input type="password" name="password1" placeholder="Password"
+                   	onfocus="this.placeholder = ''" onblur="this.placeholder = 'password'" required
+									class="single-input">
+							</div>
+							<div class="mt-10">
+								<input type="password" name="password2" placeholder="Password"
+                   	onfocus="this.placeholder = ''" onblur="this.placeholder = 'password'" required
+									class="single-input">
+							</div>
+							<div class="mt-10">
+								<input type="email" name="email" placeholder="Email address"
+									onfocus="this.placeholder = ''" onblur="this.placeholder = 'Email address'" required
+									class="single-input">
+							</div>
+							<input type="submit" name="" value="Register">
+						</form>
+		 <a class="boxed-btn4" href="/accounts/user_register">Register</a>
+		  <form enctype="multipart/form-data" method="POST">
+
           {% csrf_token %}
+
           {{ user_form.as_p }}
           {{ profile_form.as_p }}
           <input type="submit" name="" value="Register">
         </form>
+			{% for messages in messages %}
+	<p>{{messages}}</p>
+	{% endfor %}
 
 
     </div>
+
+					</div>
+
   </div>
-</body>
-</html>
+{% endblock content %}

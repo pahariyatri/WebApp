@@ -1,4 +1,6 @@
 from django.db import models
+from multiselectfield import MultiSelectField
+
 
 # Create your models here.
 
@@ -52,7 +54,7 @@ class Thought(models.Model):
 
 
 class Destination(models.Model):
-    REG = (('Himachal Pradesh', 'Himachal Pradesh'), ('Uttarakhand', 'Uttarakhand'),
+    REG = (('Himachal_Pradesh', 'Himachal Pradesh'), ('Uttarakhand', 'Uttarakhand'),
            ('Jammu and Kashmir', 'Jammu and Kashmir'), ('leh ladakh', 'leh ladakh'),
            ('Meghalaya', 'Meghalaya'), ('Sikkim', 'Sikkim'), ('Goa', 'Goa'),
            ('Rajasthan', 'Rajasthan'), ('Kerala', 'Kerala'), ('Karnataka', 'Karnataka'))
@@ -61,15 +63,15 @@ class Destination(models.Model):
             ('GROUP', 'GROUP'), ('RELIGOUS', 'RELIGOUS'),
             ('WATER_ACTIVITIES', 'WATER_ACTIVITIES'), ('NATURE', 'NATURE'),
             ('FAMILY', 'FAMILY'), ('COUPLE', 'COUPLE'))
+
     name = models.CharField(max_length=100)
-    small_description = models.CharField(max_length=200)
+    tagline = models.CharField(max_length=200)
     img = models.ImageField()
     price = models.IntegerField()
     location = models.CharField(max_length=200)
     region = models.CharField(max_length=30, choices=REG)
-    full_description = models.CharField(max_length=150)
-    continue_description = models.CharField(max_length=5000, blank=True)
-    mythological = models.CharField(max_length=5000, blank=True)
+    description = models.CharField(max_length=5000)
+    mythologi = models.CharField(max_length=5000, blank=True)
     destination_covered = models.CharField(max_length=200, blank=True)
     categories = models.CharField(max_length=30, choices=CATE)
     duration = models.CharField(max_length=50, choices=DURA)
@@ -78,13 +80,13 @@ class Destination(models.Model):
 
 class DestinationImage(models.Model):
     destination = models.ForeignKey(Destination, on_delete=models.CASCADE, )
-    img = models.ImageField(upload_to='pic')
+    img = models.ImageField(upload_to='pic', blank=True)
 
 
 class DestinationDay(models.Model):
     destination = models.ForeignKey(Destination, on_delete=models.CASCADE, )
     day_heading = models.CharField(max_length=100)
-    day = models.CharField(max_length=1000)
+    day = models.CharField(max_length=1000, blank=True)
 
 
 class DestinationInclude(models.Model):
@@ -94,7 +96,6 @@ class DestinationInclude(models.Model):
     meals = models.CharField(max_length=200, blank=True)
     transport = models.CharField(max_length=200, blank=True)
     additional = models.CharField(max_length=200, blank=True)
-
 
 class DestinationExclude(models.Model):
     destination = models.ForeignKey(Destination, on_delete=models.CASCADE, )

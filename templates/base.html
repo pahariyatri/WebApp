@@ -1,5 +1,5 @@
 {% load static %}
-<html class="no-js" lang="zxx">
+
 
 <head>
     <meta charset="utf-8">
@@ -30,7 +30,7 @@
 
     <link rel="stylesheet" href="{%static 'css/style.css' %}">
 
-    <link rel="stylesheet" href="{% static 'css/responsive.css' %}">
+
 </head>
 
 <body>
@@ -63,7 +63,7 @@
                                                     <li><a href="single-blog.html">single-blog</a></li>
                                                 </ul>
                                             </li>
-                                            <li><a href="contact.html">Contact</a></li>
+                                            <li><a href="/accounts/customize">Customize</a></li>
                                         </ul>
                                     </nav>
                                 </div>
@@ -76,9 +76,9 @@
                                     <div class="social_links d-none d-xl-block">
                                         <ul>
                                             <li><a href="#"> <i class="fa fa-instagram"></i> </a></li>
-                                            <li><a href="#"> <i class="fa fa-linkedin"></i> </a></li>
+                                            <li><a href="#"> <i class="ti-twitter-alt"></i> </a></li>
                                             <li><a href="#"> <i class="fa fa-facebook"></i> </a></li>
-                                            <li><a href="#"> <i class="fa fa-google-plus"></i> </a></li>
+                                            <li><a href="#"> <i class="fa fa-youtube-play"></i> </a></li>
                                         </ul>
                                     </div>
                                 </div>
@@ -110,10 +110,10 @@
                         <div class="footer_widget">
                             <div class="footer_logo">
                                 <a href="#">
-                                    <img src="img/footer_logo.png" alt="">
+                                    <img src="{%static 'img/pahariyatri.png' %}" alt="">
                                 </a>
                             </div>
-                            <p>5th flora, 700/D kings road, green <br> india 175017 <br>
+                            <p>5th floor, 700/D kings road, green <br> india 175017 <br>
                                 <a href="#">+91 9569576707</a> <br>
                                 <a href="#">pahariyatri@gmail.com</a>
                             </p>
@@ -232,7 +232,6 @@
                         <p class="copy_right text-center">
                             <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
                         Copyright &copy;<script>document.write(new Date().getFullYear());</script> All rights reserved | <a href="https://www.instagram.com/pahariyatri" target="_blank">Pahari Yatri</a>
-<!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
                         </p>
                     </div>
                 </div>
@@ -244,7 +243,7 @@
   <div class="modal fade custom_search_pop" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered" role="document">
       <div class="modal-content">
-          <form method="post" action="accounts/user_login">
+          <form method="post" action="/accounts/user_login">
               {% csrf_token %}
              <div class="author_thumb">
                  <img src="{%static 'img/pahariyatri.png' %}" style="" alt="">
@@ -259,7 +258,7 @@
 									class="single-input">
               </div>
               <button class="genric-btn default-border" type="submit" value="Login">Login</button>
-              <button class="genric-btn default-border" type="submit" >Sign Up</button>
+               <a href="/accounts/register" class="genric-btn default-border" type="submit" >Sign Up</a>
           </form>
     </div>
   </div>
@@ -330,5 +329,3 @@ jQuery("#overlay").hide();
 </script>
 
 </body>
-
-</html>

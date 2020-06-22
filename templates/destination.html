@@ -29,37 +29,35 @@
                 </div>
                 <div class="col-lg-9">
                     <div class="search_wrap">
-                        <div class="counter_wrap">
-                                <div class="row">
-                                    <div class="col-lg-4 col-md-4">
-                                        <div class="single_counter text-center">
-
-                                            <h3  class="counter">{{ c }}</h3>
-
-                                            <p>Tour has done successfully</p>
-                                        </div>
-                                    </div>
-                                    <div class="col-lg-4 col-md-4">
-                                        <div class="single_counter text-center">
-                                            <h3 class="counter">6</h3>
-                                            <p>Yearly tour arrange</p>
-                                        </div>
-                                    </div>
-                                    <div class="col-lg-4 col-md-4">
-                                        <div class="single_counter text-center">
-                                            <h3 class="counter">3</h3>
-                                            <p>Happy Clients</p>
-                                        </div>
-                                    </div>
-                                </div>
+                        <form class="search_form" method="get" action="{% url 'search_results' %}">
+                            <div class="input_field">
+                                <input type="text"  name="q" id="name" placeholder="Where to go?">
                             </div>
-
+                             <div class="input_field">
+                                <input id="datepicker" placeholder="Date">
+                            </div>
+                            <div class="input_field">
+                              <select name="q" id="Type">
+                                   <option data-display="Travel type">Travel type</option>
+                                   <option value="ADVENTURE">Adventure</option>
+                                   <option value="COUPLE">Couple</option>
+                                   <option value="FAMILY">Family</option>
+                                   <option value="GROUP">Group</option>
+                                   <option value="NATURE">Nature</option>
+                                   <option value="SOLO">Solo</option>
+                                   <option value="RELIGOUS">Religous</option>
+                                   <option value="WATER_ACTIVITIES">Water Activities</option>
+								</select>
+                            </div>
+                            <div class="search_btn">
+                                <button class="boxed-btn4 " type="submit" name="submit" >Search</button>
+                            </div>
+                        </form>
                     </div>
                 </div>
             </div>
         </div>
     </div>
-    <!-- where_togo_area_end  -->
 
     <div class="popular_places_area">
         <div class="container">
@@ -73,36 +71,34 @@
                                 <div class="row">
                                     <div class="col-lg-12">
                                         <div class="single_select">
-                                            <select>
-                                                <option data-display="Country">Country</option>
-                                                <option value="1">Africa</option>
-                                                <option value="2">canada</option>
-                                                <option value="4">USA</option>
-                                              </select>
-                                        </div>
-                                    </div>
-                                    <div class="col-lg-12">
-                                        <div class="single_select">
                                             <select name="q">
-                                                <option data-display="Categories">Categories</option>
-								            	<option value="SOLO">SOLO</option>
-            				            		<option value="FAMILY">FAMILY</option>
-            						            <option value="GROUP">GROUP</option>
-                                                <option value="ROMANTIC">ROMANTIC</option>
+                                                <option data-display="Region">Region</option>
+                                                <option value="Himachal_Pradesh">Himachal Pradesh</option>
+                                                <option value="Uttarakhand">Uttarakhand</option>
+                                                <option value="leh ladakh">leh ladakh</option>
+                                                <option value="Jammu and Kashmir">Jammu and Kashmir</option>
+                                                <option value="Meghalaya">Meghalaya</option>
+                                                <option value="Goa">Goa</option>
+
                                               </select>
                                         </div>
                                     </div>
                                     <div class="col-lg-12">
                                         <div class="single_select">
-                                            <select activities="q">
-                                                <option data-display="Activities">Activities</option>
-                                                <option value="ADVENTURE">ADVENTURE</option>
-                                                <option value="WILDLIFE">WILDLIFE</option>
-                                                <option value="RELIGOUS">RELIGOUS</option>
-                                                <option value="WATER_ACTIVITIES">WATER_ACTIVITIES</option>
-                                              </select>
+                                            <select name="q" id="Type">
+                                   <option data-display="Travel type">Travel type</option>
+                                   <option value="ADVENTURE">Adventure</option>
+                                   <option value="COUPLE">Couple</option>
+                                   <option value="FAMILY">Family</option>
+                                   <option value="GROUP">Group</option>
+                                   <option value="NATURE">Nature</option>
+                                   <option value="SOLO">Solo</option>
+                                   <option value="RELIGOUS">Religous</option>
+                                   <option value="WATER_ACTIVITIES">Water Activities</option>
+								</select>
                                         </div>
                                     </div>
+
                                     <div class="col-lg-12">
                                         <div class="single_select">
                                             <select naem="q">
@@ -111,6 +107,15 @@
                                                 <option value="2">advance</option>
                                                 <option value="4">premium</option>
                                               </select>
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-12">
+                                        <div class="range_slider_wrap">
+                                            <span class="range">Prise range</span>
+                                            <div id="slider-range"></div>
+                                            <p>
+                                                <input type="text" id="amount"  style="border:0; color:#7A838B; font-weight:400;">
+                                            </p>
                                         </div>
                                     </div>
 
@@ -216,7 +221,7 @@
 								    <div class="header__pop">
 								    	<h2 class="header_title"> </h2>
 									    <p class="details_text"></p>
-									    <button >Book Now</button>
+
 							    	</div>
 							    </div>
                              </div>

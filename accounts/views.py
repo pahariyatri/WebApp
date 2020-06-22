@@ -24,7 +24,7 @@ def user_login(request):
             return redirect('user_login')
 
     else:
-        return render(request, '/')
+        return render(request, 'login.html')
 
 
 def user_register(request):
@@ -78,7 +78,7 @@ def register(request):
                                                 first_name=first_name, last_name=last_name)
                 user.save();
                 print('user created')
-                return redirect('login')
+                return redirect('#exampleModalCenter')
         else:
             messages.info(request,'Password Not Matching..')
             #print ('password not matching..')
@@ -101,4 +101,4 @@ def snippet_detail(request):
 
 
     form = SnippetForm()
-    return render(request, 'form.html', {'form': form})
+    return render(request, 'Customize.html')

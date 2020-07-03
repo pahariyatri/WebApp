@@ -1,296 +1,126 @@
 {% extends "base.html" %}
 {% block content %}
 {% load static %}
-  <script>document.getElementsByTagName("html")[0].className += " js";</script>
-  <link rel="stylesheet" href="{%static 'assets/css/style.css' %}">
-    <div class="bradcam_area" style="background-image: url({{ev.img.url}})">
-        <div class="container">
-            <div class="row">
-                <div class="col-xl-12">
-                    <div class="bradcam_text text-center">
-                        <h3>{{ ev.name }}</h3>
-                        <p>{{ ev.tagline }}</p>
-						<a href="#0" class="cd-add-to-cart js-cd-add-to-cart" data-price="{{ev.price}}">Add To Cart</a>
 
-                    </div>
-                </div>
+
+  <main class="mt-5 pt-4">
+    <div class="container dark-grey-text mt-5">
+
+      <!--Grid row-->
+      <div class="row wow fadeIn">
+
+        <!--Grid column-->
+        <div class="col-md-6 mb-4">
+
+          <img src="https://mdbootstrap.com/img/Photos/Horizontal/E-commerce/Products/14.jpg" class="img-fluid" alt="">
+
+        </div>
+        <!--Grid column-->
+
+        <!--Grid column-->
+        <div class="col-md-6 mb-4">
+
+          <!--Content-->
+          <div class="p-4">
+
+            <div class="mb-3">
+              <a href="">
+                <span class="badge purple mr-1">{{ object.get_category_display }}</span>
+              </a>
             </div>
+
+            <p class="lead">
+              {% if object.discount_price %}
+              <span class="mr-1">
+                <del>${{ object.price }}</del>
+              </span>
+              <span>${{ object.discount_price }}</span>
+              {% else %}
+              <span>${{ object.price }}</span>
+              {% endif %}
+            </p>
+
+            <p class="lead font-weight-bold">Description</p>
+
+            <p>{{ object.description }}</p>
+
+            {% comment %} <form class="d-flex justify-content-left">
+              <!-- Default input -->
+              <input type="number" value="1" aria-label="Search" class="form-control" style="width: 100px">
+              <button class="btn btn-primary btn-md my-0 p" type="submit">
+                Add to cart
+                <i class="fas fa-shopping-cart ml-1"></i>
+              </button>
+
+            </form> {% endcomment %}
+            <a href="{{ object.get_add_to_cart_url }}" class="btn btn-primary btn-md my-0 p">
+              Add to cart
+              <i class="fas fa-shopping-cart ml-1"></i>
+            </a>
+            <a href="{{ object.get_remove_from_cart_url }}" class="btn btn-danger btn-md my-0 p">
+              Remove from cart
+            </a>
+
+          </div>
+          <!--Content-->
+
         </div>
+        <!--Grid column-->
+
+      </div>
+      <!--Grid row-->
+
+      <hr>
+
+      <!--Grid row-->
+      <div class="row d-flex justify-content-center wow fadeIn">
+
+        <!--Grid column-->
+        <div class="col-md-6 text-center">
+
+          <h4 class="my-4 h4">Additional information</h4>
+
+          <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Natus suscipit modi sapiente illo soluta odit
+            voluptates,
+            quibusdam officia. Neque quibusdam quas a quis porro? Molestias illo neque eum in laborum.</p>
+
+        </div>
+        <!--Grid column-->
+
+      </div>
+      <!--Grid row-->
+
+      <!--Grid row-->
+      <div class="row wow fadeIn">
+
+        <!--Grid column-->
+        <div class="col-lg-4 col-md-12 mb-4">
+
+          <img src="https://mdbootstrap.com/img/Photos/Horizontal/E-commerce/Products/11.jpg" class="img-fluid" alt="">
+
+        </div>
+        <!--Grid column-->
+
+        <!--Grid column-->
+        <div class="col-lg-4 col-md-6 mb-4">
+
+          <img src="https://mdbootstrap.com/img/Photos/Horizontal/E-commerce/Products/12.jpg" class="img-fluid" alt="">
+
+        </div>
+        <!--Grid column-->
+
+        <!--Grid column-->
+        <div class="col-lg-4 col-md-6 mb-4">
+
+          <img src="https://mdbootstrap.com/img/Photos/Horizontal/E-commerce/Products/13.jpg" class="img-fluid" alt="">
+
+        </div>
+        <!--Grid column-->
+
+      </div>
+      <!--Grid row-->
+
     </div>
+  </main>
 
-
-    <div class="destination_details_info">
-        <div class="container">
-<style>
-#more {display: none;}
-</style>
-
-			<div class="section-top-border">
-				</div>
-				<div class="row">
-
-					<div class="col-lg-8 col-md-8">
-						 <div class="destination_info">
-						<h4 class="mb-30">About {{ ev.name }}</h4>
-						 <p>{{ ev.description|slice:":250" }} <span id="dots">...</span><span id="more">{{ ev.description|slice:"-250:"}}
-							  </span></p>
-								<p onclick="myFunction()" id="myBtn">Read more</p>
-
-						 </div>
-						<h4 class="mb-30">The Mythology Of {{ ev.name }}</h4>
-						  <div class="destination_info">
-							  <p>{{ ev.mythologi}} </p>
-
-							  <script>
-function myFunction() {
-  var dots = document.getElementById("dots");
-  var moreText = document.getElementById("more");
-  var btnText = document.getElementById("myBtn");
-
-  if (dots.style.display === "none") {
-    dots.style.display = "inline";
-    btnText.innerHTML = "Read more";
-    moreText.style.display = "none";
-  } else {
-    dots.style.display = "none";
-    btnText.innerHTML = "Read less";
-    moreText.style.display = "inline";
-  }
-}
-</script>
-
-
-
-							  <div class="section-top-border">
-
-{% for a in a %}
-<div class="single_destination">
-                            <h4 class="collapsible">{{a.day_heading}}</i></h4>
-                            <p class="content">{{a.day}}</p>
-                        </div>
-{% endfor %}
-
-							  </div>
-
-
-							  <div class="section-top-border">
-							   <div class="row gallery-item">
-								   {% for p in photos %}
-					<div class="col-md-4">
-						<a href="{{p.img.url}}" class="img-pop-up">
-							<div class="single-gallery-image" style="background: url({{p.img.url}});"></div>
-						</a>
-					</div>
-								   {% endfor %}
-
-
-								   </div>
-
-				</div>
-<style>
-.collapsible {
-
-
-  cursor: pointer;
-  padding: 18px;
-  width: 100%;
-  Display: block;
-  text-align: left;
-  outline: none;
-  font-size: 18px;
-
-       color: #4cd3e3;
-    border: 1px solid #4cd3e3;
-    background: #fff;
-}
-}
-
-.active, .collapsible:hover {
-  background-color: #555;
-}
-
-.content {
-  padding: 0 18px;
-  display: none;
-  overflow: hidden;
-  background-color: #fff;
-}
-
-</style>
-                    </div>
-					</div>
-
-					<div class="col-lg-3 col-md-4 mt-sm-30">
-
-						<h4 class="mb-30">Overview</h4>
-
-						<p>Destination ID : {{ev.id}}</p>
-						<p>Trip Location:{{ ev.location }} </p>
-						<p>Destination Price: {{ev.price}}</p>
-						<p>Durations : {{ev.duration}} Days</p>
-						<p>Date : {{ev.date}}</p>
-						<p>Destination Point : {{ev.destination_covered}}</p>
-						<div class="single-element-widget mt-30">
-						<h3 class="mb-20">What's Included</h3>
-						<div class="">
-
-							<h5 class="collapsible">Accommodation <i class="fa fa-caret-down"></i></i></h5>
-							<div class="content">
- 								 <ul class="unordered-list">
-									 {% for b in b %}
-										<li>{{ b.accommodation}}</li>
-									 {% endfor %}
-
-
-							</ul>
-							</div>
-<div class="single_destination">
-							<h5  class="collapsible">Meals <i class="fa fa-caret-down"></i></h5>
-
-							<div class="content">
-  <ul class="unordered-list">
-								 {% for b in b %}
-										<li>{{ b.meals}}</li>
-									 {% endfor %}
-
-							</ul>
-</div>
-</div>
-
-							<h5 class="collapsible">Guide <i class="fa fa-caret-down"></i></h5>
-
-							<div class="content">
-  <ul class="unordered-list">
-								 {% for b in b %}
-										<li>{{ b.guide}}</li>
-									 {% endfor %}
-
-							</ul>
-</div>
-							<h5 class="collapsible">Transport <i class="fa fa-caret-down"></i></h5>
-							<div class="content">
-  <ul class="unordered-list">
-								 {% for b in b %}
-										<li>{{ b.transport }}</li>
-									 {% endfor %}
-
-							</ul>
-</div>
-							<h5 class="collapsible">Additional Services <i class="fa fa-caret-down"></i></i></h5>
-							<div class="content">
- 							 <ul class="unordered-list">
-								 {% for b in b %}
-										<li>{{ b.additional}}</li>
-									 {% endfor %}
-							</ul>
-</div>
-
-							<script>
-var coll = document.getElementsByClassName("collapsible");
-
-var i;
-
-for (i = 0; i < coll.length; i++) {
-  coll[i].addEventListener("click", function() {
-    this.classList.toggle("active");
-    var content = this.nextElementSibling;
-    if (content.style.display === "block") {
-      content.style.display = "none";
-    } else {
-      content.style.display = "block";
-    }
-  });
-}
-</script>
-</div>
-						</div>
-						<div class="single-element-widget mt-30">
-						<h3 class="mb-20">WHAT'S EXCLUDED</h3>
-						<div class="">
-							<ul class="unordered-list">
-								{% for c in c %}
-								<li>{{c.list}}</li>
-								{% endfor %}
-
-							</ul>
-						</div>
-							</div>
-
-						<div class="single-element-widget mt-30">
-							<h3 class="mb-30">Radios</h3>
-							<div class="switch-wrap d-flex justify-content-between">
-								<p>01. Sample radio</p>
-								<div class="primary-radio">
-									<input type="checkbox" id="default-radio">
-									<label for="default-radio"></label>
-								</div>
-							</div>
-							<div class="switch-wrap d-flex justify-content-between">
-								<p>02. Primary Color radio</p>
-								<div class="primary-radio">
-									<input type="checkbox" id="primary-radio" checked>
-									<label for="primary-radio"></label>
-								</div>
-							</div>
-							<div class="switch-wrap d-flex justify-content-between">
-								<p>03. Confirm Color radio</p>
-								<div class="confirm-radio">
-									<input type="checkbox" id="confirm-radio" checked>
-									<label for="confirm-radio"></label>
-								</div>
-							</div>
-							<div class="switch-wrap d-flex justify-content-between">
-								<p>04. Disabled radio</p>
-								<div class="disabled-radio">
-									<input type="checkbox" id="disabled-radio" disabled>
-									<label for="disabled-radio"></label>
-								</div>
-							</div>
-							<div class="switch-wrap d-flex justify-content-between">
-								<p>05. Disabled radio active</p>
-								<div class="disabled-radio">
-									<input type="checkbox" id="disabled-radio-active" checked disabled>
-									<label for="disabled-radio-active"></label>
-								</div>
-							</div>
-						</div>
-					</div>
-				</div>
-			</div>
-        </div>
-    <div class="cd-cart cd-cart--empty js-cd-cart">
-	<a href="#0" class="cd-cart__trigger text-replace">
-		Cart
-		<ul class="cd-cart__count"> <!-- cart items count -->
-			<li>0</li>
-			<li>0</li>
-		</ul> <!-- .cd-cart__count -->
-	</a>
-
-	<div class="cd-cart__content">
-		<div class="cd-cart__layout">
-			<header class="cd-cart__header">
-				<h2>Cart</h2>
-				<span class="cd-cart__undo">Item removed. <a href="#0">Undo</a></span>
-			</header>
-
-			<div class="cd-cart__body">
-				<ul>
-					<!-- products added to the cart will be inserted here using JavaScript -->
-				</ul>
-			</div>
-
-			<footer class="cd-cart__footer">
-				<a href="#0.." class="cd-cart__checkout">
-          <em>Checkout - $<span>0</span>
-            <svg class="icon icon--sm" viewBox="0 0 24 24"><g fill="none" stroke="currentColor"><line stroke-width="2" stroke-linecap="round" stroke-linejoin="round" x1="3" y1="12" x2="21" y2="12"/><polyline stroke-width="2" stroke-linecap="round" stroke-linejoin="round" points="15,6 21,12 15,18 "/></g>
-            </svg>
-          </em>
-        </a>
-			</footer>
-		</div>
-	</div> <!-- .cd-cart__content -->
-</div> <!-- cd-cart -->
-<script src="{% static 'assets/js/util.js' %}"></script> <!-- util functions included in the CodyHouse framework -->
-<script src="{% static 'assets/js/main.js' %}"></script>
 {% endblock content %}

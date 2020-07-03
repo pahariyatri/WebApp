@@ -41,6 +41,18 @@ software architectural pattern. The MTV pattern is Djangoâ€™s take on the modelâ
 GitHub@1046
 @baba.ji_
 
+
+DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.mysql',
+        'NAME': 'pahariyatri$default',
+        'USER': 'pahariyatri',
+        'PASSWORD': 'Mysql@1046',
+        'HOST': 'pahariyatri.mysql.pythonanywhere-services.com',
+    }
+}
+
+
 error:
 pankaj@pankaj-Inspiron-5559:~/PycharmProjects/PahariYatri$ git commit -m "Add all my files"
 error: insufficient permission for adding an object to repository database .git/objects

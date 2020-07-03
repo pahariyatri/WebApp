@@ -1,4 +1,4 @@
-from .models import Snippet
+
 from django import forms
 from django.contrib.auth.models import User
 from django.contrib.auth.forms import UserCreationForm
@@ -33,11 +33,7 @@ class RegistrationForm(UserCreationForm):
 
 
 
-class SnippetForm(forms.ModelForm):
 
-    class Meta:
-        model = Snippet
-        fields = ('name', 'thought', 'pic')
 
 
 

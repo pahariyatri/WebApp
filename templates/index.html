@@ -13,8 +13,8 @@
                     <div class="row align-items-center">
                         <div class="col-xl-12 col-md-12">
                             <div class="slider_text text-center">
-                                <h3>{{ev.location}}</h3>
-                                <p>{{ ev.small_description }}</p>
+                                <h3>{{ev.title}}</h3>
+                                <p>{{ ev.tagline }}</p>
                                 <a href="destination/details/{{ ev.id }}" class="boxed-btn3">Explore Now</a>
                             </div>
                         </div>
@@ -88,8 +88,8 @@
                             <a href="destination/details/{{ e.id }}" class="prise">₹ {{e.price}}</a>
                         </div>
                         <div class="place_info">
-                            <a href="destination/details/{{ e.id }}"><h3>{{e.name}}</h3></a>
-                            <p>{{e.location}}/{{e.region}}</p>
+                            <a href="destination/details/{{ e.id }}"><h3>{{e.title}}</h3></a>
+                            <p>{{e.location}}</p>
                             <div class="rating_days d-flex justify-content-between">
                                 <span class="d-flex justify-content-center align-items-center">
                                      <i class="fa fa-star"></i>
@@ -101,7 +101,7 @@
                                 </span>
                                 <div class="days">
                                     <i class="fa fa-clock-o"></i>
-                                    <a href="destination/details/{{ e.id }}">{{e.duration}} days</a>
+                                    <a href="{{ e.id }}">{{e.duration}} days</a>
                                 </div>
                             </div>
                         </div>
@@ -335,11 +335,11 @@ padding-right: 0;
                                 <div class="col-lg-8">
                                     <div class="single_testmonial text-center">
                                         <div class="author_thumb">
-                                            <img src="{{thought.img.url}}"  class="m" alt="">
+                                            <img src="{{thought.profile_pic.url}}"  class="m" alt="">
                                         </div>
-                                        <p>{{thought.text}}</p>
+                                        <p>{{thought.thought}}</p>
                                         <div class="testmonial_author">
-                                            <h3>- {{thought.name}}</h3>
+                                            <h3>- {{thought.user}}</h3>
                                         </div>
                                     </div>
                                 </div>

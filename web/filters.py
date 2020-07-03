@@ -6,5 +6,5 @@ class DestinationFilter(django_filters.FilterSet):
         model = Destinations
         fields = {
             'name': ['icontains', 'istartswith', 'iendswith'],
-            'categories': ['icontains', 'istartswith', 'iendswith'],
+
         }

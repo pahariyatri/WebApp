@@ -33,6 +33,7 @@ ALLOWED_HOSTS = []
 INSTALLED_APPS = [
     'accounts',
     'web',
+    'blog',
     'crispy_forms',
     'multiselectfield',
     'django.contrib.admin',
@@ -43,6 +44,10 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
 
 ]
+
+
+
+
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
@@ -67,6 +72,7 @@ TEMPLATES = [
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
+
             ],
         },
     },
@@ -81,7 +87,7 @@ WSGI_APPLICATION = 'PahariYatri.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': 'mydb',
+        'NAME': 'database',
         'USER': 'postgres',
         'PASSWORD': '@baba.ji_',
         'HOST': 'localhost',

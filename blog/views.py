@@ -40,4 +40,3 @@ def PostList(request):
         "page_title": page_title,
     }
     return render(request, 'blog.html',ev)
-

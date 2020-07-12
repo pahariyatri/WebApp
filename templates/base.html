@@ -1,6 +1,4 @@
 {% load static %}
-
-
 <head>
     <meta charset="utf-8">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
@@ -13,6 +11,7 @@
     <!-- Place favicon.ico in the root directory -->
 
     <!-- CSS here -->
+    <link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
 
     <link rel="stylesheet" href="{%static 'css/popup.css' %}">
     <link rel="stylesheet" href="{%static 'css/bootstrap.min.css' %}">
@@ -55,7 +54,6 @@
                                             <li><a class="active" href="/">home</a></li>
                                             <li><a class ="active" href="/destination">Destinations</a></li>
                                             <li><a class ="active" href="/blog">stories</a></li>
-
                                             <li><a href="/accounts/customize">Customize</a></li>
                                         </ul>
                                     </nav>
@@ -63,30 +61,39 @@
                             </div>
                             <div class="col-xl-4 col-lg-4 d-none d-lg-block">
                                 <div class="social_wrap d-flex align-items-center justify-content-end">
+                                    {% if user.is_authenticated %}
                                     <div class="number">
-                                        <p> <i class="fa fa-phone"></i> +91 9569576707</p>
+                                        <p><a href="/cart"> <i class="fa fa-shopping-cart"></i></a></p>
                                     </div>
                                     <div class="social_links d-none d-xl-block">
-                                        <ul>
-                                            <li><a href="#"> <i class="fa fa-instagram"></i> </a></li>
-                                            <li><a href="#"> <i class="ti-twitter-alt"></i> </a></li>
-                                            <li><a href="#"> <i class="fa fa-facebook"></i> </a></li>
-                                            <li><a href="#"> <i class="fa fa-youtube-play"></i> </a></li>
-                                        </ul>
+                                        <p> <a href="javascript:myFun()" class="probtn">Profile</a></p>
+                                        <div id="myDropdown" class="prodropdown-content">
+                                            <ul style="display: flex;flex-direction: column;">
+                                                <li><a href="#">Profile</a></li>
+                                                <li><a href="/accounts/logout">Logout</a></li>
+                                            </ul>
+                                        </div>
                                     </div>
+                                    {% else %}
+                                    <div class="number">
+                                        <p><a href="/accounts/user_login">  Log in</a></p>
+                                    </div>
+                                    <div class="social_links d-none d-xl-block">
+                                        <p><a href="/accounts/user_register"> Sign up</a></p>
+                                    </div>
+                                    {% endif %}
                                 </div>
                             </div>
                             <div class="seach_icon">
-                               <a data-toggle="modal" data-target="#exampleModalCenter" href="">
-                                    <i class="fa fa-user"  style='font-size:40px;' ></i>
+                                <a data-toggle="modal" data-target="#exampleModalCenter" href="#">
+                                    <i class="fa fa-search"></i>
                                 </a>
                             </div>
                             <div class="col-12">
-                                <div class="mobile_menu d-block d-lg-none"></div>
+                                <div class="mobile_menu d-block d-lg-none "></div>
                             </div>
                         </div>
                     </div>
-
                 </div>
             </div>
         </div>
@@ -96,127 +103,7 @@
 {% block content %} {% endblock content %}
 
         <footer class="footer">
-        <div class="footer_top">
-            <div class="container">
-                <div class="row">
-                    <div class="col-xl-4 col-md-6 col-lg-4 ">
-                        <div class="footer_widget">
-                            <div class="footer_logo">
-                                <a href="#">
-                                    <img src="{%static 'img/pahariyatri.png' %}" alt="">
-                                </a>
-                            </div>
-                            <p>5th floor, 700/D kings road, green <br> india 175017 <br>
-                                <a href="#">+91 9569576707</a> <br>
-                                <a href="#">pahariyatri@gmail.com</a>
-                            </p>
-                            <div class="socail_links">
-                                <ul>
-                                    <li>
-                                        <a href="#">
-                                            <i class="ti-facebook"></i>
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a href="#">
-                                            <i class="ti-twitter-alt"></i>
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a href="#">
-                                            <i class="fa fa-instagram"></i>
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a href="#">
-                                            <i class="fa fa-pinterest"></i>
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a href="#">
-                                            <i class="fa fa-youtube-play"></i>
-                                        </a>
-                                    </li>
-                                </ul>
-                            </div>
 
-                        </div>
-                    </div>
-                    <div class="col-xl-2 col-md-6 col-lg-2">
-                        <div class="footer_widget">
-                            <h3 class="footer_title">
-                                Company
-                            </h3>
-                            <ul class="links">
-                                <li><a href="#">Pricing</a></li>
-                                <li><a href="#">About</a></li>
-                                <li><a href="#"> Gallery</a></li>
-                                <li><a href="#"> Contact</a></li>
-                            </ul>
-                        </div>
-                    </div>
-                    <div class="col-xl-3 col-md-6 col-lg-3">
-                        <div class="footer_widget">
-                            <h3 class="footer_title">
-                                Explore by Category
-                            </h3>
-                            <ul class="links double_links">
-
-                                <li><a href="/adventure">Adventure</a></li>
-                                <li><a href="/nature">Nature</a></li>
-                                <li><a href="/solo">Solo</a></li>
-                                <li><a href="/group">Group</a></li>
-                                <li><a href="/religous">Religous</a></li>
-                                <li><a href="/family">Family</a></li>
-                                <li><a href="/romantic">Romantic</a></li>
-                                <li><a href="/wateractivities">Water Activities</a></li
-
-
-                            </ul>
-                        </div>
-                    </div>
-                    <div class="col-xl-3 col-md-6 col-lg-3">
-                        <div class="footer_widget">
-                            <h3 class="footer_title">
-                                Instagram
-                            </h3>
-                            <div class="instagram_feed">
-                                <div class="single_insta">
-                                    <a href="#">
-                                        <img src="{% static 'img/instagram/1.png' %}" alt="">
-                                    </a>
-                                </div>
-                                <div class="single_insta">
-                                    <a href="#">
-                                        <img src="{% static 'img/instagram/2.png' %}" alt="">
-                                    </a>
-                                </div>
-                                <div class="single_insta">
-                                    <a href="#">
-                                        <img src="{% static 'img/instagram/3.png' %}" alt="">
-                                    </a>
-                                </div>
-                                <div class="single_insta">
-                                    <a href="#">
-                                        <img src="{% static 'img/instagram/4.png' %}" alt="">
-                                    </a>
-                                </div>
-                                <div class="single_insta">
-                                    <a href="#">
-                                        <img src="{% static 'img/instagram/5.png' %}" alt="">
-                                    </a>
-                                </div>
-                                <div class="single_insta">
-                                    <a href="#">
-                                        <img src="{% static 'img/instagram/6.png' %}" alt="">
-                                    </a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
         <div class="copy-right_text">
             <div class="container">
                 <div class="footer_border"></div>
@@ -227,6 +114,7 @@
                         Copyright &copy;<script>document.write(new Date().getFullYear());</script> All rights reserved | <a href="https://www.instagram.com/pahariyatri" target="_blank">Pahari Yatri</a>
                         </p>
                     </div>
+
                 </div>
             </div>
         </div>
@@ -236,30 +124,31 @@
   <div class="modal fade custom_search_pop" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered" role="document">
       <div class="modal-content">
-          <form method="post" action="/accounts/user_login">
-              {% csrf_token %}
-             <div class="author_thumb">
-                 <img src="{%static 'img/pahariyatri.png' %}" style="" alt="">
-             </div>
-              <div class="mt-10">
-                  <input type="text" name="username" placeholder="Username" onfocus="this.placeholder = ''"
-                         onblur="this.placeholder = 'username'" required class="single-input">
-              </div>
-              <div class="mt-10">
-                   <input type="password" name="password" placeholder="Password"
-                   	onfocus="this.placeholder = ''" onblur="this.placeholder = 'password'" required
-									class="single-input">
-              </div>
-              <button class="genric-btn default-border" type="submit" value="Login">Login</button>
-               <a href="/accounts/register" class="genric-btn default-border" type="submit" >Sign Up</a>
-          </form>
+        <div class="serch_form">
+            <form method="get" action="{% url 'search_results' %}">
+            <input type="text" id="q" name="q" placeholder="Search" >
+            <button type="submit">search</button>
+            </form>
+        </div>
+      </div>
     </div>
   </div>
-  </div>
+</body>
+
 
     <!-- JS here -->
+<script src="{%static 'js/jquery-1.12.4.js' %}"></script>
+            <script src="{%static 'js/jqueryUI.js' %}"></script>
+<script>
+    $(function () {
+        $("#q").autocomplete({
+            source: '{% url 'autocomplete' %}',
+            minLength: 2
+        });
+    });
+</script>
     <script src="{%static 'js/vendor/modernizr-3.5.0.min.js' %}"></script>
-    <script src="{%static 'js/vendor/jquery-1.12.4.min.js' %}"></script>
+
     <script src="{%static 'js/popper.min.js' %}"></script>
     <script src="{%static 'js/bootstrap.min.js' %}"></script>
     <script src="{%static 'js/owl.carousel.min.js' %}"></script>
@@ -278,9 +167,6 @@
     <script src="{%static 'js/gijgo.min.js' %}"></script>
     <script src="{%static 'js/slick.min.js' %}"></script>
 
-
-
-
     <!--contact js-->
     <script src="{%static 'js/contact.js' %}"></script>
     <script src="{%static 'js/jquery.ajaxchimp.min.js' %}"></script>
@@ -298,6 +184,29 @@
          }
         });
     </script>
+
+
+    <script>
+/* When the user clicks on the button,
+toggle between hiding and showing the dropdown content */
+function myFun() {
+  document.getElementById("myDropdown").classList.toggle("proshow");
+}
+
+// Close the dropdown if the user clicks outside of it
+window.onclick = function(event) {
+  if (!event.target.matches('.dropbtn')) {
+    var dropdowns = document.getElementsByClassName("dropdown-content");
+    var i;
+    for (i = 0; i < dropdowns.length; i++) {
+      var openDropdown = dropdowns[i];
+      if (openDropdown.classList.contains('show')) {
+        openDropdown.classList.remove('show');
+      }
+    }
+  }
+}
+</script>
 
       <script>
 //appends an "active" class to .popup and .popup-content when the "Open" button is clicked

@@ -2,7 +2,7 @@
 {% block content %}
 {% load static %}
 
-
+<link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
   <!-- slider_area_start -->
     <div class="slider_area">
         <div class="slider_active owl-carousel">
@@ -28,47 +28,43 @@
     </div>
     <!-- slider_area_end -->
   <!-- where_togo_area_start  -->
-    <div class="where_togo_area">
+    <div class="newletter_area overlay">
         <div class="container">
-            <div class="row align-items-center">
-                <div class="col-lg-3">
-                    <div class="form_area">
-                        <h3>Where you want to go?</h3>
-                    </div>
-                </div>
-                <div class="col-lg-9">
-                    <div class="search_wrap">
-                        <form class="search_form" method="get" action="{% url 'search_results' %}">
-                            <div class="input_field">
-                                <input type="text"  name="q" id="name" placeholder="Where to go?">
+            <div class="row justify-content-center align-items-center">
+                <div class="col-lg-10">
+                    <div class="row align-items-center">
+                        <div class="col-lg-5">
+                            <div class="newsletter_text">
+                                <h4>Where you want to go?</h4>
+                                <p>Enter name of places and location to discover our packages.</p>
                             </div>
-                             <div class="input_field">
-                                <input id="datepicker" placeholder="Date">
+                        </div>
+                        <div class="col-lg-7">
+                            <div class="mail_form">
+                                <form class="search_form" method="get" action="{% url 'search_results' %}">
+                                <div class="row no-gutters">
+                                    <div class="col-lg-9 col-md-8">
+                                        <div class="newsletter_field">
+                                            <input type="text"  name="q" id="q" placeholder="Where to go?">
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-3 col-md-4">
+                                        <div class="newsletter_btn">
+                                            <button class="boxed-btn4 " type="submit" >Search</button>
+                                        </div>
+                                    </div>
+                                </div>
+                                </form>
                             </div>
-                            <div class="input_field">
-                               <select name="q" id="Type">
-                                   <option data-display="Travel type">Travel type</option>
-                                   <option value="ADVENTURE">Adventure</option>
-                                   <option value="COUPLE">Couple</option>
-                                   <option value="FAMILY">Family</option>
-                                   <option value="GROUP">Group</option>
-                                   <option value="NATURE">Nature</option>
-                                   <option value="SOLO">Solo</option>
-                                   <option value="RELIGOUS">Religous</option>
-                                   <option value="WATER_ACTIVITIES">Water Activities</option>
-								</select>
-                            </div>
-
-
-                            <div class="search_btn">
-                                <button class="boxed-btn4 " type="submit" name="submit" >Search</button>
-                            </div>
-                        </form>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
     </div>
+
+
+
  <div class="popular_places_area">
         <div class="container">
             <div class="row justify-content-center">

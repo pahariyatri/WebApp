@@ -3,63 +3,154 @@
 {% load static %}
 
 
-    <div class="container">
-    <div class="jumbotron">
-
-        <h1>Register Here</h1>
 
 
-		 <form method="POST" action="register">
-              {% csrf_token %}
-							<div class="mt-10">
-								<input type="text" name="first_name" placeholder="First Name"
-									onfocus="this.placeholder = ''" onblur="this.placeholder = 'First Name'" required
-									class="single-input">
-							</div>
-							<div class="mt-10">
-								<input type="text" name="last_name" placeholder="Last Name"
-									onfocus="this.placeholder = ''" onblur="this.placeholder = 'Last Name'" required
-									class="single-input">
-							</div>
-							<div class="mt-10">
-								<input type="text" name="username" placeholder="username"
-									onfocus="this.placeholder = ''" onblur="this.placeholder = 'username'" required
-									class="single-input">
-							</div>
-							<div class="mt-10">
-								<input type="password" name="password1" placeholder="Password"
-                   	onfocus="this.placeholder = ''" onblur="this.placeholder = 'password'" required
-									class="single-input">
-							</div>
-							<div class="mt-10">
-								<input type="password" name="password2" placeholder="Password"
-                   	onfocus="this.placeholder = ''" onblur="this.placeholder = 'password'" required
-									class="single-input">
-							</div>
-							<div class="mt-10">
-								<input type="email" name="email" placeholder="Email address"
-									onfocus="this.placeholder = ''" onblur="this.placeholder = 'Email address'" required
-									class="single-input">
-							</div>
-							<input type="submit" name="" value="Register">
-						</form>
-		 <a class="boxed-btn4" href="/accounts/user_register">Register</a>
-		  <form enctype="multipart/form-data" method="POST">
+        <style>
+.accordion_container {
+  width: 90%;
+  margin: 0 auto;
+}
 
-          {% csrf_token %}
+.accordion_head {
+        border: 4px solid #191b1b7a;
+    background: #fff;
+    color: #040e279e;
+    cursor: pointer;
+    font-family: arial;
+    text-align: center;
+    font-size: 16px;
+    margin: 20px 0 20px 0;
+    padding: 7px 11px;
+    font-weight: bold;
+}
 
-          {{ user_form.as_p }}
-          {{ profile_form.as_p }}
-          <input type="submit" name="" value="Register">
-        </form>
-			{% for messages in messages %}
-	<p>{{messages}}</p>
-	{% endfor %}
+.accordion_body {
 
+    background: #fff;
+    color: #040e279e;
+}
 
-    </div>
+.accordion_body p {
+  padding: 10px 5px;
+  margin: 0px;
+}
 
+.plusminus {
+  float: right;
+}
+
+</style>
+ <section class="contact-section">
+	 <div class="container">
+		 <div class="row">
+			 <div class="col-12">
+				 <h4 class="contact-title">Register Yourself</h4>
+			 </div>
+			<div class="col-lg-8">
+				<div class="accordion_head">I am traveler <span class="plusminus">-</span></div>
+					<div class="accordion_body" style="display: block;">
+						<form class="form-contact contact_form" method="POST" action="register">
+              			{% csrf_token %}
+                            <div class="row">
+                                <div class="col-sm-6">
+                                    <div class="form-group">
+                                        <input class="form-control valid" name="first_name" type="text" onfocus="this.placeholder = ''" onblur="this.placeholder = 'First Name'" placeholder="First Name">
+                                    </div>
+                                </div>
+								<div class="col-sm-6">
+                                    <div class="form-group">
+                                        <input class="form-control valid" name="last_name" type="text" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Last Name'" placeholder="Last Name">
+                                    </div>
+                                </div>
+								<div class="col-12">
+                                    <div class="form-group">
+                                        <input class="form-control" name="username" type="text" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Username'" placeholder="Username">
+                                    </div>
+                                </div>
+                                <div class="col-sm-6">
+                                    <div class="form-group">
+                                        <input class="form-control valid" name="password1" type="password" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Password'" placeholder="Password">
+                                    </div>
+                                </div>
+								 <div class="col-sm-6">
+                                    <div class="form-group">
+                                        <input class="form-control valid" name="password2" type="password" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Confirm Password'" placeholder="Confirm Password">
+                                    </div>
+                                </div>
+                                <div class="col-12">
+                                    <div class="form-group">
+                                        <input class="form-control valid" name="email" type="email" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Enter email address'" placeholder="Email">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-group mt-3">
+                                 <button type="submit" class="genric-btn info-border">Register</button>
+                            </div>
+                        </form>
+							{% for messages in messages %}
+	                        	<p>{{messages}}</p>
+                        	{% endfor %}
+							<p>Already have an account? <a href="/accounts/user_login" >Log in</a> </p>
 					</div>
+					<div class="accordion_head">i have business<span class="plusminus">+</span></div>
+					<div class="accordion_body" style="display: none;">
+  						<form enctype="multipart/form-data" method="POST">
+          					{% csrf_token %}
+          					{{ user_form.as_p }}
+          					{{ profile_form.as_p }}
+          					<button type="submit" class="genric-btn info-border">Register</button>
+        				</form>
+					</div>
+				</div>
+			 <div class="col-lg-3 offset-lg-1">
+                        <!--<img src="{%static 'img/pahariyatri.png' %}" style="" alt="">-->
+                        <div class="media contact-info">
+                            <span class="contact-info__icon"><i class="ti-home"></i></span>
+                            <div class="media-body">
+                                <h3>Buttonwood, California.</h3>
+                                <p>Rosemead, CA 91770</p>
+                            </div>
+                        </div>
+                        <div class="media contact-info">
+                            <span class="contact-info__icon"><i class="ti-tablet"></i></span>
+                            <div class="media-body">
+                                <h3>+1 253 565 2365</h3>
+                                <p>Mon to Fri 9am to 6pm</p>
+                            </div>
+                        </div>
+                        <div class="media contact-info">
+                            <span class="contact-info__icon"><i class="ti-email"></i></span>
+                            <div class="media-body">
+                                <h3>support@colorlib.com</h3>
+                                <p>Send us your query anytime!</p>
+                            </div>
 
-  </div>
+                        </div>
+                    </div>
+		 </div>
+		 {% for messages in messages %}
+			<p>{{messages}}</p>
+		 {% endfor %}
+	 </div>
+ </section>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script>
+$(document).ready(function() {
+  //toggle the component with class accordion_body
+  $(".accordion_head").click(function() {
+    if ($('.accordion_body').is(':visible')) {
+      $(".accordion_body").slideUp(300);
+      $(".plusminus").text('+');
+    }
+    if ($(this).next(".accordion_body").is(':visible')) {
+      $(this).next(".accordion_body").slideUp(300);
+      $(this).children(".plusminus").text('+');
+    } else {
+      $(this).next(".accordion_body").slideDown(300);
+      $(this).children(".plusminus").text('-');
+    }
+  });
+});
+
+</script>
 {% endblock content %}
